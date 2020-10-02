@@ -1,4 +1,4 @@
-<link href="/Du_an_nien_luan/assets/backend/layouts/partials/quangcao.css" type=" text/css " rel="stylesheet " />
+<link href="/Du_an_nien_luan/assets/partials/quangcao.css" type=" text/css " rel="stylesheet " />
 
 <div class="col-md-6 quangcao_col">
     <a href="">

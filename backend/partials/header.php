@@ -1,4 +1,4 @@
-    <link href="/Du_an_nien_luan/assets/backend/layouts/partials/header.css" type=" text/css " rel="stylesheet " />
+    <link href="/Du_an_nien_luan/assets/partials/header.css" type=" text/css " rel="stylesheet " />
 
     <div class="row header ">
         <div class="col-md-4 search-button ">
@@ -44,10 +44,10 @@
             <div class="col-md-12">
                 <ul class="nav justify-content-center ">
                     <li class="navbar-header ">
-                        <a class="nav-link active item-navbar " href="index.php ">Trang chủ</a>
+                        <a class="nav-link active item-navbar " href="/Du_an_nien_luan/index.php ">Trang chủ</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link item-navbar " href="../HtmlFile/Gioi_thieu.html">Giới thiệu</a>
+                        <a class="nav-link item-navbar " href="/Du_an_nien_luan/backend/pages/gioithieu.php">Giới thiệu</a>
                     </li>
                     <li class="nav-item sanpham-block ">
                         <a class="nav-link item-navbar " href="../HtmlFile/san_pham.html">Tất cả sản phẩm</a>
@@ -109,7 +109,7 @@
 
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link item-navbar " href="../HtmlFile/Lien_he.html">Liên hệ</a>
+                        <a class="nav-link item-navbar " href="/Du_an_nien_luan/backend/pages/lienhe.php">Liên hệ</a>
                     </li>
                 </ul>
             </div>

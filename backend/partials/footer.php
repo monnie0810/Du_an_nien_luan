@@ -1,4 +1,4 @@
-<link href="/Du_an_nien_luan/assets/backend/layouts/partials/footer.css" type=" text/css " rel="stylesheet " />
+<link href="/Du_an_nien_luan/assets/partials/footer.css" type=" text/css " rel="stylesheet " />
 <!-- footer img  -->
 <div class="row ">
     <div class="col-md-12 footer_img">

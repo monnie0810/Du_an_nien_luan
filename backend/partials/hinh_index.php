@@ -1,4 +1,4 @@
-<link href="/Du_an_nien_luan/assets/backend/layouts/partials/hinh_index.css" type=" text/css " rel="stylesheet " />
+<link href="/Du_an_nien_luan/assets/partials/hinh_index.css" type=" text/css " rel="stylesheet " />
        
        <!-- slider anh home -->
         <div class="row ">
