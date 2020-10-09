@@ -100,8 +100,6 @@
 
         <?php include_once(__DIR__.'/../partials/footer.php'); ?>
 
-
-
         <!-- form đăng nhập -->
         <?php include_once(__DIR__.'/../partials/dangnhap_popup.php'); ?>
 

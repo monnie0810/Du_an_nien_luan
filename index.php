@@ -12,15 +12,13 @@
 <body>
 
     <div class="container-fluid ">
+        <!-- start navbar-header -->
         <?php include_once(__DIR__.'/backend/partials/header.php'); ?>
         <!-- end navbar-header -->
-        <!-- noi dung san pham -->
 
         <!-- slider anh home -->
         <?php include_once(__DIR__.'/backend/partials/hinh_index.php'); ?>
 
-        <!-- start main content -->
-        <!-- end main content  -->
         <div id="app">
             <!-- danh mục sản phẩm -->
             <div class="row ">
@@ -231,7 +229,7 @@
 
 
     <!-- form đăng nhập -->
-    <?php include_once(__DIR__.'/../backend/partials/dangnhap_popup.php'); ?>
+    <?php include_once(__DIR__.'/backend/partials/dangnhap_popup.php'); ?>
     <!-- end form đăng nhập -->
     <?php include_once(__DIR__.'/backend/scripts.php'); ?>
 

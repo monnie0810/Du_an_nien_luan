@@ -57,7 +57,7 @@
                                 </label>
                             </div>
                             <button type="submit" class="btn btn-outline-primary">Đăng nhập</button>
-                            <a class="btn btn-outline-success" href="dang_ky.html" role="button">Đăng ký</a>
+                            <a class="btn btn-outline-success" href="/Du_an_nien_luan/backend/pages/dangky.php" role="button">Đăng ký</a>
                         </div>
                     </form>
                 </div>
