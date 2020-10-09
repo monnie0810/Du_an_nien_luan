@@ -10,29 +10,25 @@
             minlength: 3,
             maxlength: 50
           },
-          category_name: {
+          txtEmail: {
             required: true,
-            minlength: 3,
-            maxlength: 50
           },
-          description: {
+          txtsodienthoai: {
             required: true,
-            minlength: 3,
-            maxlength: 255
+            minlength: 10,
+            maxlength: 10
           }
         },
         messages: {
-          category_code: {
+          txtHoTen: {
             required: "Vui lòng nhập Họ tên !",
-            minlength: "Họ tên phải chứa tối thiểu 3 ký tự",
-            maxlength: "Họ tên chứa tối đa 50 ký tự"
+            minlength: "Họ tên phải chứa tối thiểu 3 ký tự !",
+            maxlength: "Họ tên chứa tối đa 50 ký tự !"
           },
-          category_name: {
-            required: "Vui lòng nhập tên Loại sản phẩm",
-            minlength: "Tên Loại sản phẩm phải có ít nhất 3 ký tự",
-            maxlength: "Tên Loại sản phẩm không được vượt quá 50 ký tự"
+          txtEmail: {
+            required: "Vui lòng nhập email !",
           },
-          description: {
+          txtsodienthoai: {
             required: "Vui lòng nhập mô tả cho Loại sản phẩm",
             minlength: "Mô tả cho Loại sản phẩm phải có ít nhất 3 ký tự",
             maxlength: "Mô tả cho Loại sản phẩm không được vượt quá 255 ký tự"
