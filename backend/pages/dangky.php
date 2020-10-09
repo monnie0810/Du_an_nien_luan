@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monnie Store - Giới thiệu</title>
+    <title>Monnie Store - Đăng ký</title>
     <?php include_once(__DIR__.'/../styles.php'); ?>
     <link rel="stylesheet" href="/Du_an_nien_luan/assets/pages/dangky.css" type="text/css " />
 
@@ -60,7 +60,7 @@
                     </div>
                     <div class="col-md-8 dangky_form">
                         <!-- form dang ky du lieu  -->
-                        
+
                         <form name="form_dangky" id="form_dangky" action="#" method="POST">
                             <div class="row title_formdangky">
                                 <div class="col-md-12">
@@ -109,13 +109,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="txtmatkhau">Mật khẩu</label>
-                                        <input type="password" class="form-control" id="txtmatkhau"
+                                        <input type="password" class="form-control" name="txtmatkhau" id="txtmatkhau"
                                             placeholder="Nhập mật khẩu">
                                     </div>
                                     <div class="form-group">
                                         <label for="txtnhaplaimatkhau">Nhập lại mật khẩu </label>
-                                        <input type="password" class="form-control" id="txtnhaplaimatkhau"
-                                            placeholder="Nhập lại mật khẩu ">
+                                        <input type="password" class="form-control" name="txtnhaplaimatkhau"
+                                            id="txtnhaplaimatkhau" placeholder="Nhập lại mật khẩu ">
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
             </div>
             <div class="col-md-2"></div>
         </div>
-        
+
         <?php include_once(__DIR__.'/../partials/footer.php'); ?>
 
 
@@ -141,8 +141,9 @@
         <?php include_once(__DIR__.'/../scripts.php'); ?>
 
 
-<!-- file xu ly rang buoc du lieu phia client & server  -->
-<?php include_once(__DIR__.'/../../assets/backend/dangky.php'); ?>
+        <!-- file xu ly rang buoc du lieu phia client & server  -->
+        <!-- <?php include_once(__DIR__.'/../../assets/backend/dangky.php'); ?> -->
+        <script src="/Du_an_nien_luan/assets/script/dangky.js"></script>
 
 
 </body>

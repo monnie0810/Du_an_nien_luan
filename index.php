@@ -226,12 +226,15 @@
 
 
     <!-- end slider home -->
-
+    <?php include_once(__DIR__.'/backend/scripts.php'); ?>
 
     <!-- form đăng nhập -->
     <?php include_once(__DIR__.'/backend/partials/dangnhap_popup.php'); ?>
     <!-- end form đăng nhập -->
-    <?php include_once(__DIR__.'/backend/scripts.php'); ?>
+    <!-- ràng buộc phía client cho form đăng nhập  -->
+ <script src="/Du_an_nien_luan/assets/script/dangnhap.js"></script>
+ <!-- end ràng buột đang nhập  -->
+  
 
 </body>
 
