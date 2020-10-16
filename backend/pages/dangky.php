@@ -1,3 +1,6 @@
+<?php
+ session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -61,7 +64,7 @@
                     <div class="col-md-8 dangky_form">
                         <!-- form dang ky du lieu  -->
 
-                        <form name="form_dangky" id="form_dangky" action="#" method="POST">
+                        <form name="form_dangky" id="form_dangky" action="/Du_an_nien_luan/assets/backend/dangky.php" method="POST">
                             <div class="row title_formdangky">
                                 <div class="col-md-12">
                                     <h4>Nhập thông tin đăng ký </h4>
@@ -121,7 +124,17 @@
                             </div>
                             <div class="row submit_formdangky">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn" onclick="checkForm()">Đăng ký</button>
+                                    <button type="submit" name="btndangky" id="btndangky" class="btn">Đăng ký</button>
+                                </div>
+                            </div>
+                            <div class="row ">
+                                <div class="col-md-12">
+                                    <?php
+                                    if(isset( $_SESSION["thongbao"])){
+                                        echo  $_SESSION["thongbao"];
+                                        session_unset();
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </form>
@@ -141,8 +154,7 @@
         <?php include_once(__DIR__.'/../scripts.php'); ?>
 
 
-        <!-- file xu ly rang buoc du lieu phia client & server  -->
-        <!-- <?php include_once(__DIR__.'/../../assets/backend/dangky.php'); ?> -->
+        <!-- file xu ly rang buoc du lieu phia client -->
         <script src="/Du_an_nien_luan/assets/script/dangky.js"></script>
 
 

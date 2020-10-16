@@ -7,10 +7,21 @@
     <title>Moon Store - Trang chủ</title>
     <?php include_once(__DIR__.'/backend/styles.php'); ?>
     <link rel="stylesheet" href="/Du_an_nien_luan/assets/pages/index.css" type="text/css " />
+    <link href="/Du_an_nien_luan/assets/partials/header.css" type=" text/css" rel="stylesheet " />
+    <style>
+    .user_khachhang span {
+        color: #FACC2E;
+        font-weight: bold;
+    }
+    .user_khachhang {
+        text-align: center;
+        padding-top: 7px;
+
+    }
+    </style>
 </head>
 
 <body>
-
     <div class="container-fluid ">
         <!-- start navbar-header -->
         <?php include_once(__DIR__.'/backend/partials/header.php'); ?>
@@ -232,9 +243,9 @@
     <?php include_once(__DIR__.'/backend/partials/dangnhap_popup.php'); ?>
     <!-- end form đăng nhập -->
     <!-- ràng buộc phía client cho form đăng nhập  -->
- <script src="/Du_an_nien_luan/assets/script/dangnhap.js"></script>
- <!-- end ràng buột đang nhập  -->
-  
+
+    <!-- end ràng buột đang nhập  -->
+
 
 </body>
 

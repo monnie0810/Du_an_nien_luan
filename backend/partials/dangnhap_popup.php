@@ -1,9 +1,14 @@
+<?php
+session_start();
+?>
+ 
+ 
  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <!-- start form dang nhap -->
-             <form name="Form_dangnhap" id="Form_dangnhap" action="" method="POST">
+             <form name="Form_dangnhap" id="Form_dangnhap" action="/Du_an_nien_luan/assets/backend/dangnhap.php" method="POST">
 
                  <div class="modal-header">
                      <h5 class="modal-title title-dangnhap" id="exampleModalLabel">Đăng nhập vào MoonStore.com
@@ -36,11 +41,12 @@
                                  </div>
                              </div>
                              <input type="password" class="form-control" id="txtmatkhau" name="txtmatkhau"
-                                 placeholder="Password">
+                                 placeholder="Mật khẩu">
                          </div>
-                         <div class="alert hotro_form" role="alert" id="help_pass" style="color: red; font-size: 12px;">
-
-                         </div>
+                        
+                     </div>
+                     <div>
+                    
                      </div>
 
                  </div>
@@ -51,7 +57,7 @@
                              Remember me
                          </label>
                      </div>
-                     <button type="submit" class="btn btn-outline-primary">Đăng nhập</button>
+                     <button type="submit" class="btn btn-outline-primary" name="btn_dangnhap" id="btn_dangnhap">Đăng nhập</button>
                      <a class="btn btn-outline-success" href="/Du_an_nien_luan/backend/pages/dangky.php"
                          role="button">Đăng ký</a>
                  </div>
@@ -60,4 +66,5 @@
          </div>
      </div>
  </div>
+ <!-- <script src="/Du_an_nien_luan/assets/script/dangnhap.js"></script> -->
  

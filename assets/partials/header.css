@@ -63,9 +63,9 @@ body {
     padding-left: 2px;
     padding-right: 10px;
     text-align: right;
-    margin-top: 50px;
     transition: font-size 0.3s ease-in-out;
     font-size: 15px;
+    margin-top: 30px;
 }
 
 .danhnhap-button:hover {
@@ -78,11 +78,11 @@ body {
 }
 
 .giohang-button {
-    margin-top: 50px;
     transition: font-size 0.3s ease-in-out;
     padding-left: 10px;
     padding-right: 2px;
     font-size: 15px;
+    margin-top: 30px;
 }
 
 .giohang-button:hover {
