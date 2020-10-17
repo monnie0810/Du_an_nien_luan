@@ -30,7 +30,6 @@
         <!-- slider anh home -->
         <?php include_once(__DIR__.'/backend/partials/hinh_index.php'); ?>
 
-        <div id="app">
             <!-- danh mục sản phẩm -->
             <div class="row ">
                 <div class="col-md-2 ">
@@ -232,7 +231,7 @@
             <!-- end footer  -->
 
 
-        </div>
+        
     </div>
 
 

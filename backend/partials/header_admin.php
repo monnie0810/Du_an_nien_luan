@@ -7,7 +7,7 @@
         } 
 ?>
 
-<link href="/Du_an_nien_luan/assets/partials/header.css" type=" text/css" rel="stylesheet " />
+<link href="/Du_an_nien_luan/assets/partials/header_admin.css" type=" text/css" rel="stylesheet " />
 
 <div class="row header ">
     <div class="col-md-4 search-button ">
@@ -72,14 +72,14 @@
                     <!-- ------------------------------------------------------- -->
                     <div class="col-md-6 danhnhap-button">
                         <a href="#" tabindex="-1" data-toggle="modal" data-target="#exampleModal">
-                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                            <i class="fa fa-user-circle" aria-hidden="true"></i>
                             <span>Đăng nhập </span>
                         </a>
                     </div>
                     <div class="col-md-6 giohang-button ">
-                        <a href="/Du_an_nien_luan/backend/pages/dangky.php">
-                        <i class="fa fa-user-circle" aria-hidden="true"></i>
-                            <span> Đăng ký</span>
+                        <a href="#">
+                            <i class="fa fa-credit-card" aria-hidden="true"></i>
+                            <span> Giỏ hàng</span>
                         </a>
                     </div>
                     <?php endif; ?>
@@ -97,72 +97,35 @@
         <div class="col-md-12">
             <ul class="nav justify-content-center ">
                 <li class="navbar-header ">
-                    <a class="nav-link active item-navbar " href="/Du_an_nien_luan/index.php ">Trang chủ</a>
+                    <a class="nav-link active item-navbar " href="/Du_an_nien_luan/index.php ">Đơn hàng</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link item-navbar " href="/Du_an_nien_luan/backend/pages/gioithieu.php">Giới thiệu</a>
+                    <a class="nav-link item-navbar " href="/Du_an_nien_luan/backend/pages/gioithieu.php">Doanh thu</a>
                 </li>
                 <li class="nav-item sanpham-block ">
-                    <a class="nav-link item-navbar " href="../HtmlFile/san_pham.html">Tất cả sản phẩm</a>
+                    <a class="nav-link item-navbar " href="#">Quản lý</a>
                     <div class="sanpham-content ">
                         <div class="sanpham-level ">
 
                             <ul style="list-style-type:none; ">
-                                <h6>DEAL CHỚP NHOÁNG</h6>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html"> Sản phẩm giảm giá</a>
+                                    <a href="../HtmlFile/san_pham.html">Danh sách sản phẩm</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Sản phẩm mới</a>
+                                    <a href="../HtmlFile/san_pham.html">Danh sách loại sản phẩm</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html"> Sản phẩm nổi bật</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="sanpham-level ">
-                            <ul style="list-style-type:none; ">
-                                <h6>DÀNH CHO NỮ</h6>
-                                <li>
-                                    <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html"> Đầm - Áo </a>
-                                </li>
-                                <li>
-                                    <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Quần - chân váy</a>
-                                </li>
-                                <li>
-                                    <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Áo khoác</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="sanpham-level ">
-                            <ul style="list-style-type:none; ">
-                                <h6>DÀNH CHO NAM</h6>
-                                <li>
-                                    <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Quần</a>
-                                </li>
-                                <li>
-                                    <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Áo</a>
-                                </li>
-                                <li>
-                                    <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Áo khoác</a>
+                                    <a href="../HtmlFile/san_pham.html">Danh sách thương hiệu</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-
-
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link item-navbar " href="/Du_an_nien_luan/backend/pages/lienhe.php">Liên hệ</a>
+                    <a class="nav-link item-navbar " href="/Du_an_nien_luan/backend/pages/lienhe.php">Thành viên</a>
                 </li>
             </ul>
         </div>
