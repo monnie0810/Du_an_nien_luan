@@ -66,5 +66,5 @@ session_start();
          </div>
      </div>
  </div>
- <!-- <script src="/Du_an_nien_luan/assets/script/dangnhap.js"></script> -->
+ <script src="/Du_an_nien_luan/assets/script/dangnhap.js"></script>
  

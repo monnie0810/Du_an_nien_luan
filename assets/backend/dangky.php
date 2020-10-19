@@ -12,7 +12,7 @@ if(isset($_POST['btndangky'] )){
     $diachi = $_POST['txtdiachi'];
     $matkhau = sha1($_POST['txtmatkhau']);
     $nhaplaimatkhau = sha1($_POST['txtnhaplaimatkhau']);
-    $quantri = 0;
+    $quantri = 1;
     if ($tendangnhap != '' && $email != '' && $sdt != '' && $diachi != '' && $matkhau != '' && $nhaplaimatkhau != ''){
         if($matkhau != $nhaplaimatkhau){
             $_SESSION["thongbao"] = "Mật khẩu không khớp !";
@@ -35,7 +35,7 @@ if(isset($_POST['btndangky'] )){
             ('$tendangnhap', '$ngaysinh', '$gioitinh', '$email', '$sdt', '$diachi', '$matkhau', $quantri);                  
 EOT;
         $result = mysqli_query($conn, $sql);
-        // $_SESSION["thongbao"] = "Đăng ký thành công !";
+        $_SESSION["user"] = $sdt;
         header("location: /Du_an_nien_luan/index.php");   
     
 } else{
