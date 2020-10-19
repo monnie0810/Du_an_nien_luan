@@ -114,7 +114,7 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Danh sách loại sản phẩm</a>
+                                    <a href="/Du_an_nien_luan/backend/pages/loaisanpham/danhsach_lsp.php">Danh sách loại sản phẩm</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>

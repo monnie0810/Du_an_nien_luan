@@ -130,8 +130,8 @@
                             <div class="row ">
                                 <div class="col-md-12">
                                     <?php
-                                    if(isset( $_SESSION["thongbao"])){
-                                        echo  $_SESSION["thongbao"];
+                                    if(isset( $_SESSION["thongbaodk"])){
+                                        echo  $_SESSION["thongbaodk"];
                                         session_unset();
                                     }
                                     ?>

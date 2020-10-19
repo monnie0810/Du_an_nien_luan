@@ -15,7 +15,7 @@ if(isset($_POST['btndangky'] )){
     $quantri = 1;
     if ($tendangnhap != '' && $email != '' && $sdt != '' && $diachi != '' && $matkhau != '' && $nhaplaimatkhau != ''){
         if($matkhau != $nhaplaimatkhau){
-            $_SESSION["thongbao"] = "Mật khẩu không khớp !";
+            $_SESSION["thongbaodk"] = "Mật khẩu không khớp !";
             header("location: /Du_an_nien_luan/backend/pages/dangky.php");
             die();
         }
@@ -23,7 +23,7 @@ if(isset($_POST['btndangky'] )){
         $sql1="SELECT * FROM thanhvien WHERE tv_sdt = '$sdt'";
         $result1 = mysqli_query($conn, $sql1);
         if(mysqli_num_rows( $result1) > 0){
-            $_SESSION["thongbao"] = "Số điện thoại đã có người dùng sử dụng !";
+            $_SESSION["thongbaodk"] = "Số điện thoại đã có người dùng sử dụng !";
             header("location: /Du_an_nien_luan/backend/pages/dangky.php");
             die();
         }
@@ -39,7 +39,7 @@ EOT;
         header("location: /Du_an_nien_luan/index.php");   
     
 } else{
-    $_SESSION["thongbao"] = "Vui lòng nhập thông tin đầy đủ !";
+    $_SESSION["thongbaodk"] = "Vui lòng nhập thông tin đầy đủ !";
     header("location: /Du_an_nien_luan/backend/pages/dangky.php");
     }
 

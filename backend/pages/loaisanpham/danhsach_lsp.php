@@ -9,7 +9,7 @@ if (session_id() === '') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoonStore - Danh sách sản phẩm</title>
+    <title>MoonStore - Loại sản phẩm</title>
 
 
     <?php include_once(__DIR__.'/../../styles.php'); ?>
@@ -110,8 +110,7 @@ if (session_id() === '') {
                                         <td>
                                             <!-- Nút sửa, bấm vào sẽ hiển thị form hiệu chỉnh thông tin dựa vào khóa chính -->
                                             <a href="sua_lsp.php?lsp_id=<?= $dondathang['lsp_id'] ?>"
-                                                class="btn btn-warning" data-toggle="modal"
-                                                data-target="#popup_themlsp">
+                                                class="btn btn-warning">
                                                 Sửa
                                             </a>
                                             <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `dh_ma` -->
@@ -136,7 +135,7 @@ if (session_id() === '') {
         </div>
     </div>
 
-    <!-- footer -->
+    <!-- Thêm loại sản phẩm -->
     <div class="modal fade" id="popup_themlsp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -173,8 +172,10 @@ if (session_id() === '') {
             </div>
         </div>
     </div>
+     <!-- end Thêm loại sản phẩm -->
 
-    <!-- end footer -->
+
+     
 
     <!-- Nhúng file quản lý phần SCRIPT JAVASCRIPT -->
     <?php include_once(__DIR__ . '/../../scripts.php'); ?>

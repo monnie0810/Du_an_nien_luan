@@ -10,7 +10,7 @@ if (session_id() === '') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moon Store - Danh sách sản phẩm</title>
+    <title>Moon Store - Trang Admin</title>
     <?php include_once(__DIR__.'/../styles.php'); ?>
     <link rel="stylesheet" href="/Du_an_nien_luan/assets/pages/index.css" type="text/css " />
     <link href="/Du_an_nien_luan/assets/partials/header_admin.css" type=" text/css" rel="stylesheet " />
