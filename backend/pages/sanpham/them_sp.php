@@ -17,7 +17,7 @@
 
 <body>
     <div class="container-fluid ">
-        <?php include_once(__DIR__.'/../../partials/header.php'); ?>
+        <?php include_once(__DIR__.'/../../partials/header_admin.php'); ?>
 
 
         <!-- duong dan  -->
@@ -26,11 +26,11 @@
             <div class="col-md-8 duongdan">
                 <ul style="list-style-type: none;">
                     <li class="duongdan_truoc">
-                        <a href="../HtmlFile/index.html"><span>Trang chủ</span> </a>
+                        <a href="/Du_an_nien_luan/backend/pages/index_admin.php"><span>Trang chủ</span> </a>
                     </li>
 
                     <li class="duongdan_hientai">
-                        <a href="../HtmlFile/dang_ky.html"> <span>Thêm loại sản phẩm</span> </a>
+                        <a href="#"> <span>Thêm sản phẩm</span> </a>
                     </li>
                 </ul>
             </div>
@@ -45,8 +45,8 @@
                 <div class="row trang_dangky">
                     <div class="col-md-12 dangky_form">
                         <!-- form dang ky du lieu  -->
-                        <form name="form_dangky" id="form_dangky" action="/Du_an_nien_luan/assets/backend/dangky.php"
-                            method="POST">
+                        <form name="form_themsp" id="form_themsp"
+                            action="/Du_an_nien_luan/backend/pages/sanpham/xuly_themsp.php" method="POST">
                             <div class="row title_formdangky">
                                 <div class="col-md-12">
                                     <h4>Nhập thông tin sản phẩm </h4>
@@ -71,24 +71,59 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="txtHoTen">Kích thước</label>
-                                        <input type="number" class="form-control" name="txtkichthuoc" id="txtkichthuoc"
+                                        <input type="text" class="form-control" name="txtkichthuoc" id="txtkichthuoc"
                                             aria-describedby="nameHelp" placeholder="Số lượng sản phẩm">
                                     </div>
                                     <!-- select loai san pham va thuong hieu -->
                                     <?php
                                     include_once(__DIR__.'/../../../dbconnect.php'); 
-                                    $sql=
+                                    $sql ="SELECT * FROM loaisanpham";
+                                    $result = mysqli_query($conn, $sql);
+                                    $data=[];
+                                    while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                                        $data[] = array (
+                                            'lsp_id' => $row['lsp_id'],
+                                            'lsp_ten' => $row['lsp_ten'],
 
+                                        );
+                                    }
                                       ?>
                                     <div class="form-group">
                                         <label for="txtHoTen">Loại sản phẩm</label>
-                                        <input type="number" class="form-control" name="txtkichthuoc" id="txtkichthuoc"
-                                            aria-describedby="nameHelp" placeholder="Số lượng sản phẩm">
+                                        <select class="form-control" id="txtlsp" name="txtlsp">
+                                            <?php foreach($data as $loaisanpham): ?>
+                                            <option value="<?=$loaisanpham['lsp_ten']?>">
+                                                <?=$loaisanpham['lsp_ten']?>
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
-
-
                                 </div>
                                 <div class="col-md-6">
+                                    <?php
+                                    include_once(__DIR__.'/../../../dbconnect.php'); 
+                                    $sql ="SELECT * FROM thuonghieu";
+                                    $result = mysqli_query($conn, $sql);
+                                    $data=[];
+                                    while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                                        $data[] = array (
+                                            'th_id' => $row['th_id'],
+                                            'th_ten' => $row['th_ten'],
+
+                                        );
+                                    }
+                                      ?>
+                                    <div class="form-group">
+                                        <label for="txtHoTen">Loại sản phẩm</label>
+                                        <select class="form-control" id="txtthuonghieu" name="txtthuonghieu">
+                                            <?php foreach($data as $loaisanpham): ?>
+                                            <option value="<?=$loaisanpham['th_ten']?>">
+                                                <?=$loaisanpham['th_ten']?>
+                                            </option>
+                                            <?php endforeach; ?>
+                                        </select>
+
+                                    </div>
                                     <div class="form-group">
                                         <label for="txtHoTen">Giá nhập sẩn phẩm:</label>
                                         <input type="number" class="form-control" name="txtgianhap" id="txtgianhap"
@@ -101,20 +136,27 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="txtHoTen">Mô tả sản phẩm:</label>
-                                        <input type="textarea" class="form-control" name="txtmotasp" id="txtmotasp"
-                                            aria-describedby="nameHelp" placeholder="Mô tả sản phẩm">
+                                        <textarea class="form-control" name="txtmotasp" id="txtmotasp" cols="30"
+                                            rows="5" placeholder="Mô tả sản phẩm"></textarea>
+
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
 
                                 </div>
                             </div>
                             <div class="row submit_formdangky">
                                 <div class="col-md-12">
-                                    <button type="submit" name="btnthem" id="btnthem" class="btn">Thêm sản phẩm</button>
+                                    <button type="submit" name="btnthemsp" id="btnthemsp" class="btn">Thêm sản
+                                        phẩm</button>
                                 </div>
                             </div>
                             <div class="row ">
-                                <div class="col-md-12">
+                                <div class="col-md-12" style="text-align: center;">
                                     <?php
+                                    
                                     if(isset( $_SESSION["thongbao"])){
                                         echo  $_SESSION["thongbao"];
                                         session_unset();
@@ -131,15 +173,12 @@
 
         <?php include_once(__DIR__.'/../../partials/footer.php'); ?>
 
-
-
-
-
         <?php include_once(__DIR__.'/../../scripts.php'); ?>
-
+ <!-- Các file Javascript sử dụng riêng cho trang này, liên kết tại đây -->
+  
 
         <!-- file xu ly rang buoc du lieu phia client -->
-        <script src="/Du_an_nien_luan/assets/script/dangky.js"></script>
+        <!-- <script src="/Du_an_nien_luan/backend/pages/sanpham/them_sp.js"></script> -->
 
 
 </body>

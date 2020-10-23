@@ -9,7 +9,7 @@ if (session_id() === '') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoonStore - Loại sản phẩm</title>
+    <title>MoonStore - Thương hiệu</title>
     <?php include_once(__DIR__.'/../../styles.php'); ?>
     
    <style>
@@ -79,7 +79,7 @@ if (session_id() === '') {
                     </li>
 
                     <li class="duongdan_hientai">
-                        <a href="../HtmlFile/dang_ky.html"> <span>Cập nhật loại sản phẩm</span> </a>
+                        <a href="../HtmlFile/dang_ky.html"> <span>Cập nhật thương hiệu</span> </a>
                     </li>
                 </ul>
             </div>
@@ -96,31 +96,31 @@ if (session_id() === '') {
                     ini_set('display_startup_errors', 1);
                     error_reporting(E_ALL);
                     include_once(__DIR__ . '/../../../dbconnect.php');
-                    $lsp_id = $_GET['lsp_id'];
+                    $th_id = $_GET['th_id'];
                    
-                    $sql = "SELECT * FROM loaisanpham WHERE lsp_id =".$lsp_id;
+                    $sql = "SELECT * FROM thuonghieu WHERE th_id =".$th_id;
     
                     // 3. Thực thi câu truy vấn SQL để lấy về dữ liệu
                     $result = mysqli_query($conn, $sql);
                     $data = [];
                     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                         $data[] = array(
-                            'lsp_ten' => $row['lsp_ten'],
-                            'lsp_id' => $row['lsp_id']
+                            'th_ten' => $row['th_ten'],
+                            'th_id' => $row['th_id']
                         );
                     }
                     ?>
                     <!-- start form them loai san pham -->
-                    <form name="Form_sualsp" id="Form_sualsp"
-                        action="/Du_an_nien_luan/backend/pages/loaisanpham/xuly_sualsp.php" method="POST">
+                    <form name="Form_suath" id="Form_suath"
+                        action="/Du_an_nien_luan/backend/pages/thuonghieu/xuly_suath.php" method="POST">
                         <div class="row body_formdangky">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <?php foreach($data as $loaisanpham): ?>
-                                    <label for="txtHoTen">Tên loại sản phẩm cập nhật</label>
-                                    <input type="text" class="form-control" name="txttenlsp" id="txttenlsp"
-                                        aria-describedby="nameHelp" value="<?= $loaisanpham['lsp_ten']?>">
-                                        <input type="hidden" name="lspid" id="lspid" value="<?= $loaisanpham['lsp_id'] ?>">
+                                    <label for="txtHoTen">Tên thương hiệu cập nhập</label>
+                                    <input type="text" class="form-control" name="txttenth" id="txttenth"
+                                        aria-describedby="nameHelp" value="<?= $loaisanpham['th_ten']?>">
+                                        <input type="hidden" name="thid" id="thid" value="<?= $loaisanpham['th_id'] ?>">
                                     <?php endforeach; ?>
                                 </div>
                             </div>
@@ -129,8 +129,8 @@ if (session_id() === '') {
                             <div class="col-md-12">
                                 <div class="form-group">
                                 <?php
-                                    if(isset( $_SESSION["thongbaolsp"])){
-                                        echo  $_SESSION["thongbaolsp"];
+                                    if(isset( $_SESSION["thongbaoth"])){
+                                        echo  $_SESSION["thongbaoth"];
                                         session_unset();
                                     }
                                     ?>
@@ -139,7 +139,7 @@ if (session_id() === '') {
                         </div>
                         <div class="row submit_formdangky">
                             <div class="col-md-12">
-                                <button type="submit" name="btn_sualsp" id="btn_sualsp" class="btn">Cập nhật</button>
+                                <button type="submit" name="btn_suath" id="btn_suath" class="btn">Cập nhật</button>
                             </div>
                         </div>
                     </form>
@@ -160,7 +160,7 @@ if (session_id() === '') {
 
 
     <!-- SweetAlert -->
-    <script src="/Du_an_nien_luan/backend/pages/loaisanpham/them_sua_lsp.js"></script>
+    <script src="/Du_an_nien_luan/backend/pages/loaisanpham/them_sua_th.js"></script>
 
 </body>
 

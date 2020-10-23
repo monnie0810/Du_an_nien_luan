@@ -13,21 +13,7 @@ if (session_id() === '') {
     <title>Moon Store - Trang Admin</title>
     <?php include_once(__DIR__.'/../styles.php'); ?>
     <link rel="stylesheet" href="/Du_an_nien_luan/assets/pages/index.css" type="text/css " />
-    <link href="/Du_an_nien_luan/assets/partials/header_admin.css" type=" text/css" rel="stylesheet " />
-  
 
-    <style>
-    .user_khachhang span {
-        color: #FACC2E;
-        font-weight: bold;
-    }
-
-    .user_khachhang {
-        text-align: center;
-        padding-top: 7px;
-
-    }
-    </style>
 </head>
 
 <body>
@@ -114,150 +100,151 @@ if (session_id() === '') {
     <!-- Bat su kien -->
     <script>
     $(document).ready(function() {
-      // ----------------- Tổng số mặt hàng --------------------------
-    function getDuLieuBaoCaoTongSoMatHang() {
-        $.ajax('/Du_an_nien_luan/backend/api/tongsokhachhang.php', {
-          success: function(data) {
-            var dataObj = typeof data === "string" ? JSON.parse(data) : null;
-           if(dataObj){
-            var htmlString = `<h1>${dataObj.SoLuong}</h1>`;
-            $('#baocaoSanPham_SoLuong').html(htmlString);
-           }
-          },
-          error: function() {
-            var htmlString = `<h1>Không thể xử lý</h1>`;
-            $('#baocaoSanPham_SoLuong').html(htmlString);
-          }
+        // ----------------- Tổng số mặt hàng --------------------------
+        function getDuLieuBaoCaoTongSoMatHang() {
+            $.ajax('/Du_an_nien_luan/backend/api/tongsokhachhang.php', {
+                success: function(data) {
+                    var dataObj = typeof data === "string" ? JSON.parse(data) : null;
+                    if (dataObj) {
+                        var htmlString = `<h1>${dataObj.SoLuong}</h1>`;
+                        $('#baocaoSanPham_SoLuong').html(htmlString);
+                    }
+                },
+                error: function() {
+                    var htmlString = `<h1>Không thể xử lý</h1>`;
+                    $('#baocaoSanPham_SoLuong').html(htmlString);
+                }
+            });
+
+        }
+        $('#refreshBaoCaoSanPham').click(function(event) {
+            event.preventDefault();
+            getDuLieuBaoCaoTongSoMatHang();
         });
-               
-      }
-      $('#refreshBaoCaoSanPham').click(function(event) {
-        event.preventDefault();
+
+        // ----------------- Tổng số khách hàng --------------------------
+        function getDuLieuBaoCaoTongSoKhachHang() {
+            $.ajax('/Du_an_nien_luan/backend/api/tongsodonhang.php', {
+                success: function(data) {
+                    var dataObj = JSON.parse(data);
+                    var htmlString = `<h1>${dataObj.SoLuong}</h1>`;
+                    $('#baocaoKhachHang_SoLuong').html(htmlString);
+                },
+                error: function() {
+                    var htmlString = `<h1>Không thể xử lý</h1>`;
+                    $('#baocaoKhachHang_SoLuong').html(htmlString);
+                }
+            });
+        }
+        $('#refreshBaoCaoKhachHang').click(function(event) {
+            event.preventDefault();
+            getDuLieuBaoCaoTongSoKhachHang();
+        });
+
+        //   // ----------------- Tổng số đơn hàng --------------------------
+        function getDuLieuBaoCaoTongSoDonHang() {
+            $.ajax('/Du_an_nien_luan/backend/api/tongsosanpham.php', {
+                success: function(data) {
+                    var dataObj = JSON.parse(data);
+                    var htmlString = `<h1>${dataObj.SoLuong}</h1>`;
+                    $('#baocaoDonHang_SoLuong').html(htmlString);
+                },
+                error: function() {
+                    var htmlString = `<h1>Không thể xử lý</h1>`;
+                    $('#baocaoDonHang_SoLuong').html(htmlString);
+                }
+            });
+        }
+        $('#refreshBaoCaoDonHang').click(function(event) {
+            event.preventDefault();
+            getDuLieuBaoCaoTongSoDonHang();
+        });
+
+        //   // ----------------- Tổng số Góp ý --------------------------
+        function getDuLieuBaoCaoTongSoGopY() {
+            $.ajax('/Du_an_nien_luan/backend/api/tongsoloaisanpham.php', {
+                success: function(data) {
+                    var dataObj = JSON.parse(data);
+                    var htmlString = `<h1>${dataObj.SoLuong}</h1>`;
+                    $('#baocaoGopY_SoLuong').html(htmlString);
+                },
+                error: function() {
+                    var htmlString = `<h1>Không thể xử lý</h1>`;
+                    $('#baocaoGopY_SoLuong').html(htmlString);
+                }
+            });
+        }
+        $('#refreshBaoCaoGopY').click(function(event) {
+            event.preventDefault();
+            getDuLieuBaoCaoTongSoGopY();
+        });
+
+
+        // ------------------ Vẽ biểu đồ thống kê Loại sản phẩm -----------------
+        // Vẽ biểu đổ Thống kê Loại sản phẩm sử dụng ChartJS
+        var $objChartThongKeLoaiSanPham;
+        var $chartOfobjChartThongKeLoaiSanPham = document.getElementById("chartOfobjChartThongKeLoaiSanPham")
+            .getContext(
+                "2d");
+
+        function renderChartThongKeLoaiSanPham() {
+            $.ajax({
+                url: '/php/myhand/backend/api/baocao-thongkeloaisanpham.php',
+                type: "GET",
+                success: function(response) {
+                    var data = JSON.parse(response);
+                    var myLabels = [];
+                    var myData = [];
+                    $(data).each(function() {
+                        myLabels.push((this.TenLoaiSanPham));
+                        myData.push(this.SoLuong);
+                    });
+                    myData.push(0); // tạo dòng số liệu 0
+                    if (typeof $objChartThongKeLoaiSanPham !== "undefined") {
+                        $objChartThongKeLoaiSanPham.destroy();
+                    }
+                    $objChartThongKeLoaiSanPham = new Chart($chartOfobjChartThongKeLoaiSanPham, {
+                        // Kiểu biểu đồ muốn vẽ. Các bạn xem thêm trên trang ChartJS
+                        type: "bar",
+                        data: {
+                            labels: myLabels,
+                            datasets: [{
+                                data: myData,
+                                borderColor: "#9ad0f5",
+                                backgroundColor: "#9ad0f5",
+                                borderWidth: 1
+                            }]
+                        },
+                        // Cấu hình dành cho biểu đồ của ChartJS
+                        options: {
+                            legend: {
+                                display: false
+                            },
+                            title: {
+                                display: true,
+                                text: "Thống kê Loại sản phẩm"
+                            },
+                            responsive: true
+                        }
+                    });
+                }
+            });
+        };
+        $('#refreshThongKeLoaiSanPham').click(function(event) {
+            event.preventDefault();
+            renderChartThongKeLoaiSanPham();
+        });
+
+        // Mới mở web (khi trang web load xong)
+        // thì sẽ gọi lập tức một số hàm AJAX gọi API lấy dữ liệu
         getDuLieuBaoCaoTongSoMatHang();
-      });
-
-      // ----------------- Tổng số khách hàng --------------------------
-      function getDuLieuBaoCaoTongSoKhachHang() {
-        $.ajax('/Du_an_nien_luan/backend/api/tongsodonhang.php', {
-          success: function(data) {
-            var dataObj = JSON.parse(data);
-            var htmlString = `<h1>${dataObj.SoLuong}</h1>`;
-            $('#baocaoKhachHang_SoLuong').html(htmlString);
-          },
-          error: function() {
-            var htmlString = `<h1>Không thể xử lý</h1>`;
-            $('#baocaoKhachHang_SoLuong').html(htmlString);
-          }
-        });
-      }
-      $('#refreshBaoCaoKhachHang').click(function(event) {
-        event.preventDefault();
         getDuLieuBaoCaoTongSoKhachHang();
-      });
-
-    //   // ----------------- Tổng số đơn hàng --------------------------
-      function getDuLieuBaoCaoTongSoDonHang() {
-        $.ajax('/Du_an_nien_luan/backend/api/tongsosanpham.php', {
-          success: function(data) {
-            var dataObj = JSON.parse(data);
-            var htmlString = `<h1>${dataObj.SoLuong}</h1>`;
-            $('#baocaoDonHang_SoLuong').html(htmlString);
-          },
-          error: function() {
-            var htmlString = `<h1>Không thể xử lý</h1>`;
-            $('#baocaoDonHang_SoLuong').html(htmlString);
-          }
-        });
-      }
-      $('#refreshBaoCaoDonHang').click(function(event) {
-        event.preventDefault();
         getDuLieuBaoCaoTongSoDonHang();
-      });
-
-    //   // ----------------- Tổng số Góp ý --------------------------
-      function getDuLieuBaoCaoTongSoGopY() {
-        $.ajax('/Du_an_nien_luan/backend/api/tongsoloaisanpham.php', {
-          success: function(data) {
-            var dataObj = JSON.parse(data);
-            var htmlString = `<h1>${dataObj.SoLuong}</h1>`;
-            $('#baocaoGopY_SoLuong').html(htmlString);
-          },
-          error: function() {
-            var htmlString = `<h1>Không thể xử lý</h1>`;
-            $('#baocaoGopY_SoLuong').html(htmlString);
-          }
-        });
-      }
-      $('#refreshBaoCaoGopY').click(function(event) {
-        event.preventDefault();
         getDuLieuBaoCaoTongSoGopY();
-      });
-
-
-      // ------------------ Vẽ biểu đồ thống kê Loại sản phẩm -----------------
-      // Vẽ biểu đổ Thống kê Loại sản phẩm sử dụng ChartJS
-      var $objChartThongKeLoaiSanPham;
-      var $chartOfobjChartThongKeLoaiSanPham = document.getElementById("chartOfobjChartThongKeLoaiSanPham").getContext(
-        "2d");
-
-      function renderChartThongKeLoaiSanPham() {
-        $.ajax({
-          url: '/php/myhand/backend/api/baocao-thongkeloaisanpham.php',
-          type: "GET",
-          success: function(response) {
-            var data = JSON.parse(response);
-            var myLabels = [];
-            var myData = [];
-            $(data).each(function() {
-              myLabels.push((this.TenLoaiSanPham));
-              myData.push(this.SoLuong);
-            });
-            myData.push(0); // tạo dòng số liệu 0
-            if (typeof $objChartThongKeLoaiSanPham !== "undefined") {
-              $objChartThongKeLoaiSanPham.destroy();
-            }
-            $objChartThongKeLoaiSanPham = new Chart($chartOfobjChartThongKeLoaiSanPham, {
-              // Kiểu biểu đồ muốn vẽ. Các bạn xem thêm trên trang ChartJS
-              type: "bar",
-              data: {
-                labels: myLabels,
-                datasets: [{
-                  data: myData,
-                  borderColor: "#9ad0f5",
-                  backgroundColor: "#9ad0f5",
-                  borderWidth: 1
-                }]
-              },
-              // Cấu hình dành cho biểu đồ của ChartJS
-              options: {
-                legend: {
-                  display: false
-                },
-                title: {
-                  display: true,
-                  text: "Thống kê Loại sản phẩm"
-                },
-                responsive: true
-              }
-            });
-          }
-        });
-      };
-      $('#refreshThongKeLoaiSanPham').click(function(event) {
-        event.preventDefault();
         renderChartThongKeLoaiSanPham();
-      });
-
-      // Mới mở web (khi trang web load xong)
-      // thì sẽ gọi lập tức một số hàm AJAX gọi API lấy dữ liệu
-      getDuLieuBaoCaoTongSoMatHang();
-      getDuLieuBaoCaoTongSoKhachHang();
-      getDuLieuBaoCaoTongSoDonHang();
-      getDuLieuBaoCaoTongSoGopY();
-      renderChartThongKeLoaiSanPham();
 
     });
-  </script>
+    </script>
 
 </body>
 

@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 user_khachhang">
+            <div class="col-md-12 user_khachhang " style="text-align: center;padding-top: 7px;">
                 <?php if (isset($_SESSION["user"])):?>
                 <?php
                     $sql="select * from thanhvien where tv_sdt =". $_SESSION["user"];
@@ -41,7 +41,7 @@
                         );
                     }?>
                 <?php foreach($data as $thanhvien): ?>
-                <span ><?= $thanhvien['tv_ten']; ?> </span>
+                <span style="color: #FACC2E; font-weight: bold;" ><?= $thanhvien['tv_ten']; ?> </span>
                 <?php endforeach; ?>
                 <?php endif; ?>
 
@@ -97,10 +97,10 @@
         <div class="col-md-12">
             <ul class="nav justify-content-center ">
                 <li class="navbar-header ">
-                    <a class="nav-link active item-navbar " href="/Du_an_nien_luan/index.php ">Đơn hàng</a>
+                    <a class="nav-link active item-navbar " href="/Du_an_nien_luan/backend/pages/index_admin.php ">Trang chủ</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link item-navbar " href="/Du_an_nien_luan/backend/pages/gioithieu.php">Doanh thu</a>
+                    <a class="nav-link item-navbar " href="/Du_an_nien_luan/backend/pages/gioithieu.php">Đơn hàng</a>
                 </li>
                 <li class="nav-item sanpham-block ">
                     <a class="nav-link item-navbar " href="#">Quản lý</a>
@@ -110,7 +110,7 @@
                             <ul style="list-style-type:none; ">
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Danh sách sản phẩm</a>
+                                    <a href="/Du_an_nien_luan/backend/pages/sanpham/danhsach_sp.php">Danh sách sản phẩm</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
@@ -118,7 +118,7 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Danh sách thương hiệu</a>
+                                    <a href="/Du_an_nien_luan/backend/pages/thuonghieu/danhsach_th.php">Danh sách thương hiệu</a>
                                 </li>
                             </ul>
                         </div>
