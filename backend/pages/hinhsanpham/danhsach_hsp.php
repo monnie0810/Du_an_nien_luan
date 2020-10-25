@@ -25,12 +25,33 @@ if (session_id() === '') {
         text-align: center;
     }
 
+    .trangchu_pages td {
+        vertical-align: middle;
+    }
+
     .content_pages {
         margin: auto;
     }
 
+    .dataTables_length {
+        width: 50%;
+        float: left;
+    }
+
+    .dataTables_filter {
+        width: 50%;
+        float: left;
+    }
+
     .tables_div {
         margin: auto;
+    }
+
+    .tensp_header {
+        color: red;
+    }
+    .img-fluid {
+        height: 100px;
     }
     </style>
 </head>
@@ -49,7 +70,7 @@ if (session_id() === '') {
                     </li>
 
                     <li class="duongdan_hientai">
-                        <a href="../HtmlFile/dang_ky.html"> <span>Danh sách thương hiệu</span> </a>
+                        <a href="#"> <span>Danh sách hình sản phẩm</span> </a>
                     </li>
                 </ul>
             </div>
@@ -64,58 +85,71 @@ if (session_id() === '') {
 
                     <!-- Block content -->
                     <?php
+                    $sp_id = $_GET['sp_id'];
                     ini_set('display_errors', 1);
                     ini_set('display_startup_errors', 1);
                     error_reporting(E_ALL);
                     include_once(__DIR__ . '/../../../dbconnect.php');
                     $i=1;
-                    $sql = "SELECT * FROM thuonghieu";
-    
-                    // 3. Thực thi câu truy vấn SQL để lấy về dữ liệu
+                    // select hinh san pham 
+                    $sql = "SELECT * FROM hinhsanpham WHERE sp_id=".$sp_id;
                     $result = mysqli_query($conn, $sql);
                     $data = [];
                     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                         $data[] = array(
-                            'th_ten' => $row['th_ten'],
-                            'th_id' => $row['th_id']
+                            'hsp_ten' => $row['hsp_ten'],
+                            'hsp_id' => $row['hsp_id']
+                        );
+                    }
+                    // select san pham 
+                    $sql1 = "SELECT * FROM sanpham WHERE sp_id=".$sp_id;
+                    $result1 = mysqli_query($conn, $sql1);
+                    while ($row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
+                        $sanpham = array(
+                            'sp_ten' => $row1['sp_ten'],
+                            'sp_id' => $row1['sp_id']
                         );
                     }
                     ?>
                     <div
                         class=" justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
-                        <h1 class="h2">Danh sách thương hiệu</h1>
+
+                        <h2 class="h2">Danh sách hình sản phẩm </h2>
+                        <h2 class="tensp_header"><?= $sanpham['sp_ten'] ?></h2>
                     </div>
                     <!-- Nút thêm mới, bấm vào sẽ hiển thị form nhập thông tin Thêm mới -->
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#popup_themth">
-                        Thêm thương hiệu
+                    <a href="/Du_an_nien_luan/backend/pages/hinhsanpham/them_hsp.php" class="btn btn-primary" style="margin-bottom: 20px;">
+                        Thêm hình sản phẩm
                     </a>
                     <div class="row content_pages">
                         <div class="tables_div">
-                            <table id="tblDanhSach_th"
-                                class="table table-hover table-sm table-responsive mt-5 trangchu_pages">
+                            <table id="tblDanhSach_hsp" class="table table-hover table-responsive mt-5 trangchu_pages">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>Số thứ tự</th>
-                                        <th>Tên thương hiệu</th>
+                                        <th>Tên hình ảnh</th>
+                                        <th>Hình ảnh</th>
                                         <th>Tác vụ</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    <?php foreach ($data as $dondathang) : ?>
+                                    <?php foreach ($data as $hinhsanpham) : ?>
                                     <tr>
                                         <td><?php echo $i; $i++; ?></td>
-                                        <td><?= $dondathang['th_ten'] ?></td>
+
+                                        <td><?= $hinhsanpham['hsp_ten'] ?></td>
                                         <td>
-                                            <!-- Nút sửa, bấm vào sẽ hiển thị form hiệu chỉnh thông tin dựa vào khóa chính -->
-                                            <a href="sua_th.php?th_id=<?= $dondathang['th_id'] ?>"
-                                                class="btn btn-warning">
-                                                Sửa
-                                            </a>
+                                            <img src="/Du_an_nien_luan/assets/img/upload_img/<?= $hinhsanpham['hsp_ten'] ?>"
+                                                class="img-fluid" width="100px" />
+
+                                        </td>
+                                        <td>
+                            
                                             <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `dh_ma` -->
                                             <button type="button" class="btn btn-danger btnDelete_th"
-                                                data-th_id="<?= $dondathang['th_id'] ?>">
+                                                data-hsp_id="<?= $hinhsanpham['hsp_id'] ?>">
                                                 Xóa
                                             </button>
 
@@ -135,48 +169,6 @@ if (session_id() === '') {
         <?php include_once(__DIR__ . '/../../partials/footer.php'); ?>
     </div>
 
-    <!-- Thêm loại sản phẩm -->
-    <div class="modal fade" id="popup_themth" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <!-- start form them loai san pham -->
-                <form name="Form_themth" id="Form_themth"
-                    action="/Du_an_nien_luan/backend/pages/thuonghieu/xuly_themth.php" method="POST">
-
-                    <div class="modal-header">
-                        <h5 class="modal-title title-dangnhap" id="exampleModalLabel">Thêm thương hiệu
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Tên thương hiệu:</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="txttenth" name="txttenth"
-                                    placeholder="Tên thương hiệu">
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-outline-primary" name="btn_themth"
-                            id="btn_themth">Thêm</button>
-                    </div>
-
-                </form>
-                <!-- end form them loai san pham  -->
-            </div>
-        </div>
-    </div>
-    <!-- end Thêm loại sản phẩm -->
-
-
-
-
     <!-- Nhúng file quản lý phần SCRIPT JAVASCRIPT -->
     <?php include_once(__DIR__ . '/../../scripts.php'); ?>
 
@@ -191,40 +183,32 @@ if (session_id() === '') {
     <script src="/Du_an_nien_luan/assets/vendor/sweetalert/sweetalert.min.js"></script>
     <script>
     $(document).ready(function() {
-        function sweet(){
-            $('.btnDelete_th').click(function() {
-
-                swal({
-                        title: "Bạn có chắc chắn muốn xóa?",
-                        text: "Sau khi xóa thì không thể phục hồi !",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                    })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            var lsp_id = $(this).data('th_id');
-                            var url = "xoa_th.php?th_id=" + th_id;
-                            location.href = url;
-                        }
-                    });
-
-            });
-        }
-
-        var datatable = $('#tblDanhSach_th').DataTable({
+        $('#tblDanhSach_hsp').DataTable({
             dom: 'Blfrtip',
             buttons: [
 
             ]
-           
         });
-        sweet();
-        datatable.on('draw', function() {
-            // Cảnh báo khi xóa
-            sweet();
 
-        })
+        // Cảnh báo khi xóa
+        $('.btnDelete_th').click(function() {
+
+            swal({
+                    title: "Bạn có chắc chắn muốn xóa?",
+                    text: "Sau khi xóa thì không thể phục hồi !",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        var hsp_id = $(this).data('hsp_id');
+                        var url = "xuly_xoahsp.php?hsp_id=" + hsp_id;
+                        location.href = url;
+                    }
+                });
+
+        });
     });
     </script>
     <script src="/Du_an_nien_luan/backend/pages/thuonghieu/them_sua_th.js"></script>

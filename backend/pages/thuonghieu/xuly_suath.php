@@ -11,7 +11,6 @@ if (session_id() === '') {
     //không cập nhật tên loại sản phẩm đã có trong dữ liệu
     $sql1 ="SELECT * FROM thuonghieu WHERE th_ten = '$th_ten'";
     $result1 = mysqli_query($conn, $sql1);
-    mysqli_query($conn, $sql1);
         if(mysqli_num_rows( $result1) > 0){
             $_SESSION['thongbaoth'] = "Loại sản phẩm đã tồn tại trong hệ thống !";
             header('location: sua_th.php?th_id='.$th_id);

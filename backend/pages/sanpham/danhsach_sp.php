@@ -16,7 +16,8 @@ if (session_id() === '') {
 
     <!-- DataTable CSS -->
     <link href="/Du_an_nien_luan/assets/vendor/DataTables/datatables.min.css" type="text/css" rel="stylesheet" />
-    <link href="/Du_an_nien_luan/assets/vendor/DataTables/Buttons-1.6.3/css/buttons.bootstrap4.min.css" type="text/css" rel="stylesheet" />
+    <link href="/Du_an_nien_luan/assets/vendor/DataTables/Buttons-1.6.3/css/buttons.bootstrap4.min.css" type="text/css"
+        rel="stylesheet" />
     <style>
     .content_lsp {
         width: 100%;
@@ -31,6 +32,15 @@ if (session_id() === '') {
         margin: auto;
         padding-left: 0px;
         padding-right: 0px;
+    }
+
+    .content_pages th {
+        text-align: center;
+    }
+
+    .content_pages td {
+        text-align: center;
+        vertical-align: middle;
     }
 
     .tables_div {
@@ -109,19 +119,21 @@ EOT;
 
                     <div class="row content_pages">
                         <div class="tables_div">
-                            <table id="tblDanhSach_sp" class="table table-hover table-sm table-responsive mt-5 trangchu_pages">
+                            <table id="tblDanhSach_sp"
+                                class="table table-hover table-sm table-responsive mt-5 trangchu_pages">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>STT</th>
-                                        <th>Tên sản phẩm</th>
-                                        <th>Màu sắc</th>
+                                        <th>Tên SP</th>
+                                        <th>Màu</th>
                                         <th>Kích thước</th>
                                         <th>Giá nhập</th>
                                         <th>Giá bán</th>
-                                        <th>Số lượng kho</th>
-                                        <th>Loại sản phẩm</th>
-                                        <th>Thương hiệu</th>
-                                        <th colspan="3">Tác vụ</th>
+                                        <th>SL kho</th>
+                                        <th>Loại SP</th>
+                                        <th>TH</th>
+                                        <th>Ảnh</th>
+                                        <th colspan="2">Tác vụ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -136,24 +148,37 @@ EOT;
                                         <td><?= $dondathang['sp_slkho'] ?></td>
                                         <td><?= $dondathang['lsp_ten'] ?></td>
                                         <td><?= $dondathang['th_ten'] ?></td>
+                                        <!-- ------------------------hinh san pham------------------- -->
+                                        <td>
+                                            <a href="/Du_an_nien_luan/backend/pages/hinhsanpham/danhsach_hsp.php?sp_id=<?= $dondathang['sp_id'] ?>"
+                                                class="btn btn-info">
+                                                Xem
+                                            </a>
+                                            <a href="/Du_an_nien_luan/backend/pages/hinhsanpham/them_hsp.php?sp_id=<?= $dondathang['sp_id'] ?>"
+                                                class="btn btn-success">
+                                                Thêm
+                                            </a>
+
+                                        </td>
+
+                                        <!-- ------------------------hinh san pham------------------- -->
 
                                         <td>
-                                            <!-- ------------------------hinh san pham------------------- -->
 
-
-
-
-                                            <!-- ------------------------hinh san pham------------------- -->
                                             <!-- Nút sửa, bấm vào sẽ hiển thị form hiệu chỉnh thông tin dựa vào khóa chính -->
                                             <a href="sua_sp.php?sp_id=<?= $dondathang['sp_id'] ?>"
                                                 class="btn btn-warning">
                                                 Sửa
                                             </a>
                                             <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `dh_ma` -->
-                                            <button type="button" class="btn btn-danger btnDelete"
+                                            <a href="xuly_xoasp.php?sp_id=<?= $dondathang['sp_id'] ?>"
+                                                class="btn btn-danger">
+                                                Xóa
+                                            </a>
+                                            <!-- <button type="button" class="btn btn-danger btnDelete_sp"
                                                 data-sp_id="<?= $dondathang['sp_id'] ?>">
                                                 Xóa
-                                            </button>
+                                            </button> -->
 
 
                                         </td>
@@ -195,24 +220,23 @@ EOT;
         });
 
         // Cảnh báo khi xóa
-        $('.btnDelete').click(function() {
+        // $('.btnDelete_sp').click(function() {
+        //     swal({
+        //             title: "Bạn có chắc chắn muốn xóa?",
+        //             text: "Sau khi xóa thì không thể phục hồi !",
+        //             icon: "warning",
+        //             buttons: true,
+        //             dangerMode: true,
+        //         })
+        //         .then((willDelete) => {
+        //             if (willDelete) {
+        //                 var lsp_id = $(this).data('sp_id');
+        //                 var url = "xuly_xoasp.php?sp_id=" + sp_id;
+        //                 location.href = url;
+        //             }
+        //         });
 
-            swal({
-                    title: "Bạn có chắc chắn muốn xóa?",
-                    text: "Sau khi xóa thì không thể phục hồi !",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        var lsp_id = $(this).data('lsp_id');
-                        var url = "xoa_lsp.php?lsp_id=" + lsp_id;
-                        location.href = url;
-                    }
-                });
-
-        });
+        // });
     });
     </script>
     <script src="/Du_an_nien_luan/backend/pages/loaisanpham/them_sua_lsp.js"></script>

@@ -2,9 +2,7 @@
     include_once(__DIR__.'/../scripts.php'); 
     include_once(__DIR__.'/../styles.php'); 
     include_once(__DIR__.'/../../dbconnect.php'); 
-        if(!isset($_SESSION)) { 
-            session_start(); 
-        } 
+      
 ?>
 
 <link href="/Du_an_nien_luan/assets/partials/header_admin.css" type=" text/css" rel="stylesheet " />
@@ -59,7 +57,7 @@
                     <div class="col-md-6 danhnhap-button">
                         <a href="#" tabindex="-1" data-target="#exampleModal">
                             <i class="fa fa-credit-card" aria-hidden="true"></i>
-                            <span>giỏ hàng</span>
+                            <span> Giỏ hàng</span>
                         </a>
                     </div>
                     <div class="col-md-6 giohang-button ">
@@ -132,3 +130,4 @@
     </div>
 </div>
 <!-- end navbar-header -->
+<?php include_once(__DIR__.'/dangnhap_popup.php'); ?>
