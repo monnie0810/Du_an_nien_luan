@@ -72,7 +72,7 @@
                                     <div class="form-group">
                                         <label for="txtHoTen">Kích thước</label>
                                         <input type="text" class="form-control" name="txtkichthuoc" id="txtkichthuoc"
-                                            aria-describedby="nameHelp" placeholder="Số lượng sản phẩm">
+                                            aria-describedby="nameHelp" placeholder="kích thước sản phẩm">
                                     </div>
                                     <!-- select loai san pham va thuong hieu -->
                                     <?php

@@ -175,11 +175,7 @@ EOT;
                                                 class="btn btn-danger">
                                                 Xóa
                                             </a>
-                                            <!-- <button type="button" class="btn btn-danger btnDelete_sp"
-                                                data-sp_id="<?= $dondathang['sp_id'] ?>">
-                                                Xóa
-                                            </button> -->
-
+                                          
 
                                         </td>
                                     </tr>
@@ -219,24 +215,6 @@ EOT;
             ]
         });
 
-        // Cảnh báo khi xóa
-        // $('.btnDelete_sp').click(function() {
-        //     swal({
-        //             title: "Bạn có chắc chắn muốn xóa?",
-        //             text: "Sau khi xóa thì không thể phục hồi !",
-        //             icon: "warning",
-        //             buttons: true,
-        //             dangerMode: true,
-        //         })
-        //         .then((willDelete) => {
-        //             if (willDelete) {
-        //                 var lsp_id = $(this).data('sp_id');
-        //                 var url = "xuly_xoasp.php?sp_id=" + sp_id;
-        //                 location.href = url;
-        //             }
-        //         });
-
-        // });
     });
     </script>
     <script src="/Du_an_nien_luan/backend/pages/loaisanpham/them_sua_lsp.js"></script>

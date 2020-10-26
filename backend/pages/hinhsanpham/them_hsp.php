@@ -13,7 +13,7 @@
     <?php include_once(__DIR__.'/../../styles.php'); ?>
     <link rel="stylesheet" href="/Du_an_nien_luan/assets/pages/dangky.css" type="text/css " />
     <style>
-    .preview-img-container img{
+    .preview-img-container img {
         height: 250px;
         width: 210px;
     }
@@ -51,7 +51,8 @@
                     <div class="col-md-7 dangky_form">
                         <!-- form dang ky du lieu  -->
                         <form name="form_themhsp" id="form_themhsp"
-                            action="/Du_an_nien_luan/backend/pages/hinhsanpham/xuly_themhsp.php" method="POST" enctype="multipart/form-data" >
+                            action="/Du_an_nien_luan/backend/pages/hinhsanpham/xuly_themhsp.php" method="POST"
+                            enctype="multipart/form-data">
                             <div class="row title_formdangky">
                                 <div class="col-md-12">
                                     <h4>Nhập thông tin sản phẩm </h4>
@@ -59,8 +60,8 @@
                             </div>
                             <!-- select san pham va thuong hieu -->
                             <?php
-                                 $sp_id = $_GET['sp_id'];
                                  include_once(__DIR__.'/../../../dbconnect.php'); 
+                                 $sp_id = $_GET['sp_id'];
                                 $sql ="SELECT * FROM sanpham WHERE sp_id=".$sp_id;
                                 $result = mysqli_query($conn, $sql);                                
                                 while($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
@@ -70,7 +71,7 @@
 
                                     );
                                 }
-                                      ?>
+                            ?>
                             <div class="row body_formdangky">
                                 <!-- id sản phẩm  -->
                                 <input type="hidden" value="<?= $data['sp_id']?>" name="txt_spid" id="txt_spid">
@@ -78,10 +79,15 @@
                                     <div class="form-group">
                                         <label for="txtHoTen">Tên sản phẩm:</label>
                                         <h4><?= $data['sp_ten']?></h4>
+                                        
                                     </div>
                                     <div class="form-group">
                                         <label for="hsp_tentaptin">Chọn hình sản phẩm</label>
                                         <input type="file" class="form-control" id="hsp_tentaptin" name="hsp_tentaptin">
+                                        <?php if(isset( $_SESSION["thongbao_hsp"])):?>
+                                        <label for="txt_nhacnho" style="color: red;">  <?= $_SESSION["thongbao_hsp"]; ?></label>
+                                        <?php session_unset(); ?>
+                                    <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
@@ -89,25 +95,17 @@
                                 <div class="col-md-12">
                                     <button type="submit" name="btnthem_hsp" id="btnthem_hsp" class="btn">Thêm hình sản
                                         phẩm</button>
+                                       
+
                                 </div>
                             </div>
-                            <div class="row ">
-                                <div class="col-md-12" style="text-align: center;">
-                                    <?php
-                                    
-                                    if(isset( $_SESSION["thongbao_img"])){
-                                        echo  $_SESSION["thongbao_img"];
-                                        session_unset();
-                                    }
-                                    ?>
-                                </div>
-                            </div>
+                            
                         </form>
                     </div>
                     <div class="col-md-5">
                         <!-- -----------------hien thi hinh anh-------------------- -->
                         <div class="preview-img-container">
-                            <img src="/Du_an_nien_luan/assets/img/Image_default.jpg" id="preview-img"  />
+                            <img src="/Du_an_nien_luan/assets/img/Image_default.jpg" id="preview-img" />
                         </div>
 
                         <!-- -----------------hien thi hinh anh-------------------- -->

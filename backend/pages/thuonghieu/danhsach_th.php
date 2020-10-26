@@ -114,10 +114,10 @@ if (session_id() === '') {
                                                 Sửa
                                             </a>
                                             <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `dh_ma` -->
-                                            <button type="button" class="btn btn-danger btnDelete_th"
-                                                data-th_id="<?= $dondathang['th_id'] ?>">
+                                            <a href="xoa_th.php?th_id=<?= $dondathang['th_id'] ?>"
+                                                class="btn btn-danger">
                                                 Xóa
-                                            </button>
+                                            </a>
 
 
                                         </td>
@@ -191,27 +191,6 @@ if (session_id() === '') {
     <script src="/Du_an_nien_luan/assets/vendor/sweetalert/sweetalert.min.js"></script>
     <script>
     $(document).ready(function() {
-        function sweet(){
-            $('.btnDelete_th').click(function() {
-
-                swal({
-                        title: "Bạn có chắc chắn muốn xóa?",
-                        text: "Sau khi xóa thì không thể phục hồi !",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                    })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            var lsp_id = $(this).data('th_id');
-                            var url = "xoa_th.php?th_id=" + th_id;
-                            location.href = url;
-                        }
-                    });
-
-            });
-        }
-
         var datatable = $('#tblDanhSach_th').DataTable({
             dom: 'Blfrtip',
             buttons: [
@@ -219,12 +198,6 @@ if (session_id() === '') {
             ]
            
         });
-        sweet();
-        datatable.on('draw', function() {
-            // Cảnh báo khi xóa
-            sweet();
-
-        })
     });
     </script>
     <script src="/Du_an_nien_luan/backend/pages/thuonghieu/them_sua_th.js"></script>

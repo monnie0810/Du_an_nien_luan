@@ -33,16 +33,14 @@
                 <?php if (isset($_SESSION["user"])):?>
                 <?php
                     $sql="select * from thanhvien where tv_sdt =". $_SESSION["user"];
-                    $result = mysqli_query($conn,$sql);
-                    $data = [];
-                    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                        $data[] = array(
-                            'tv_ten' => $row['tv_ten'],
+                    $result = mysqli_query($conn,$sql);  
+                    while ($row_ten = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                        $tentv = array(
+                            'tv_ten' => $row_ten['tv_ten'],
                         );
-                    }?>
-                <?php foreach($data as $thanhvien): ?>
-                <span ><?= $thanhvien['tv_ten']; ?> </span>
-                <?php endforeach; ?>
+                    }
+                    ?>
+                <span><?= $tentv['tv_ten']; ?> </span>
                 <?php endif; ?>
 
 
@@ -72,13 +70,13 @@
                     <!-- ------------------------------------------------------- -->
                     <div class="col-md-6 danhnhap-button">
                         <a href="#" tabindex="-1" data-toggle="modal" data-target="#exampleModal">
-                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                            <i class="fa fa-sign-in" aria-hidden="true"></i>
                             <span>Đăng nhập </span>
                         </a>
                     </div>
                     <div class="col-md-6 giohang-button ">
                         <a href="/Du_an_nien_luan/backend/pages/dangky.php">
-                        <i class="fa fa-user-circle" aria-hidden="true"></i>
+                            <i class="fa fa-user-circle" aria-hidden="true"></i>
                             <span> Đăng ký</span>
                         </a>
                     </div>
@@ -103,7 +101,8 @@
                     <a class="nav-link item-navbar " href="/Du_an_nien_luan/backend/pages/gioithieu.php">Giới thiệu</a>
                 </li>
                 <li class="nav-item sanpham-block ">
-                    <a class="nav-link item-navbar " href="../HtmlFile/san_pham.html">Tất cả sản phẩm</a>
+                    <a class="nav-link item-navbar " href="/Du_an_nien_luan/backend/pages/tatcasanpham.php?page=1">Tất
+                        cả sản phẩm</a>
                     <div class="sanpham-content ">
                         <div class="sanpham-level ">
 
@@ -111,38 +110,38 @@
                                 <h6>DEAL CHỚP NHOÁNG</h6>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html"> Sản phẩm giảm giá</a>
+                                    <a href="../HtmlFile/san_pham.html"> Sản phẩm mới</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Sản phẩm mới</a>
+                                    <a href="../HtmlFile/san_pham.html">Sản phẩm còn nhiều</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html"> Sản phẩm nổi bật</a>
+                                    <a href="../HtmlFile/san_pham.html"> Sản phẩm còn ít</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="sanpham-level ">
                             <ul style="list-style-type:none; ">
-                                <h6>DÀNH CHO NỮ</h6>
+                                <h6>Mọi giới tính</h6>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html"> Đầm - Áo </a>
+                                    <a href="../HtmlFile/san_pham.html"> Dành cho nữ </a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Quần - chân váy</a>
+                                    <a href="../HtmlFile/san_pham.html">Dành cho nam</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Áo khoác</a>
+                                    <a href="../HtmlFile/san_pham.html">Unisex</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="sanpham-level ">
                             <ul style="list-style-type:none; ">
-                                <h6>DÀNH CHO NAM</h6>
+                                <h6>Loại sản phẩm</h6>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
                                     <a href="../HtmlFile/san_pham.html">Quần</a>

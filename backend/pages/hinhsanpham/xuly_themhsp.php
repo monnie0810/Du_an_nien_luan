@@ -1,4 +1,7 @@
 <?php
+if (session_id() === '') {
+  session_start();
+}
          include_once(__DIR__.'/../../../dbconnect.php'); 
        
         if (isset($_POST['btnthem_hsp'])) {
@@ -21,7 +24,9 @@
 
               
               if ($_FILES['hsp_tentaptin']['error'] > 0) {
-                echo 'File Upload Bị Lỗi'; die;
+                $_SESSION['thongbao_hsp']='Vui lòng thêm hình ảnh !';
+                header("location: /Du_an_nien_luan/backend/pages/hinhsanpham/them_hsp.php?sp_id=".$sp_id); 
+
               } else {
           
                 $hsp_tentaptin = $_FILES['hsp_tentaptin']['name'];
@@ -39,7 +44,7 @@
               mysqli_close($conn);
 
               // Sau khi cập nhật dữ liệu, tự động điều hướng về trang Danh sách
-              header("location: /Du_an_nien_luan/backend/pages/hinhsanpham/danhsach_hsp.php?sp_id= '$sp_id'");
+              header("location: /Du_an_nien_luan/backend/pages/hinhsanpham/danhsach_hsp.php?sp_id=".$sp_id);
               
         }
       }

@@ -115,10 +115,10 @@ if (session_id() === '') {
                                                 Sửa
                                             </a>
                                             <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `dh_ma` -->
-                                            <button type="button" class="btn btn-danger btnDelete"
-                                                data-lsp_id="<?= $dondathang['lsp_id'] ?>">
-                                                Xóa
-                                            </button>
+                                            <a href="xoa_lsp.php?lsp_id=<?= $dondathang['lsp_id'] ?>"
+                                                class="btn btn-danger">
+                                                xóa
+                                            </a>
 
 
                                         </td>
@@ -198,25 +198,7 @@ if (session_id() === '') {
             ]
         });
 
-        // Cảnh báo khi xóa
-        $('.btnDelete').click(function() {
 
-            swal({
-                    title: "Bạn có chắc chắn muốn xóa?",
-                    text: "Sau khi xóa thì không thể phục hồi !",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        var lsp_id = $(this).data('lsp_id');
-                        var url = "xoa_lsp.php?lsp_id=" + lsp_id;
-                        location.href = url;
-                    }
-                });
-
-        });
     });
     </script>
     <script src="/Du_an_nien_luan/backend/pages/loaisanpham/them_sua_lsp.js"></script>

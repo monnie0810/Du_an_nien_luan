@@ -34,7 +34,7 @@ $result = mysqli_query($conn, $sql);
 mysqli_close($conn);
 
 // Sau khi cập nhật dữ liệu, tự động điều hướng về trang Danh sách
-header("location: /Du_an_nien_luan/backend/pages/hinhsanpham/danhsach_hsp.php?sp_id= '$sp_id");
+header("location: /Du_an_nien_luan/backend/pages/hinhsanpham/danhsach_hsp.php?sp_id= '$sp_id'");
 
 
 

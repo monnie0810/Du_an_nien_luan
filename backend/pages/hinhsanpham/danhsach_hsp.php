@@ -50,6 +50,7 @@ if (session_id() === '') {
     .tensp_header {
         color: red;
     }
+
     .img-fluid {
         height: 100px;
     }
@@ -118,8 +119,13 @@ if (session_id() === '') {
                         <h2 class="tensp_header"><?= $sanpham['sp_ten'] ?></h2>
                     </div>
                     <!-- Nút thêm mới, bấm vào sẽ hiển thị form nhập thông tin Thêm mới -->
-                    <a href="/Du_an_nien_luan/backend/pages/hinhsanpham/them_hsp.php" class="btn btn-primary" style="margin-bottom: 20px;">
+                    <a href="/Du_an_nien_luan/backend/pages/hinhsanpham/them_hsp.php?sp_id='<?=$sanpham['sp_id']?>'"
+                        class="btn btn-primary" style="margin-bottom: 20px;">
                         Thêm hình sản phẩm
+                    </a>
+                    <a href="/Du_an_nien_luan/backend/pages/sanpham/danhsach_sp.php" class="btn btn-secondary"
+                        style="margin-bottom: 20px;">
+                        Quay về
                     </a>
                     <div class="row content_pages">
                         <div class="tables_div">
@@ -146,12 +152,13 @@ if (session_id() === '') {
 
                                         </td>
                                         <td>
-                            
+
                                             <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `dh_ma` -->
-                                            <button type="button" class="btn btn-danger btnDelete_th"
-                                                data-hsp_id="<?= $hinhsanpham['hsp_id'] ?>">
+                                            <a class="btn btn-danger"
+                                                href="xuly_xoahsp.php?hsp_id=<?= $hinhsanpham['hsp_id'] ?>">
                                                 Xóa
-                                            </button>
+                                            </a>
+
 
 
                                         </td>
@@ -191,24 +198,24 @@ if (session_id() === '') {
         });
 
         // Cảnh báo khi xóa
-        $('.btnDelete_th').click(function() {
+        // $('.btnDelete_th').click(function() {
 
-            swal({
-                    title: "Bạn có chắc chắn muốn xóa?",
-                    text: "Sau khi xóa thì không thể phục hồi !",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        var hsp_id = $(this).data('hsp_id');
-                        var url = "xuly_xoahsp.php?hsp_id=" + hsp_id;
-                        location.href = url;
-                    }
-                });
+        //     swal({
+        //             title: "Bạn có chắc chắn muốn xóa?",
+        //             text: "Sau khi xóa thì không thể phục hồi !",
+        //             icon: "warning",
+        //             buttons: true,
+        //             dangerMode: true,
+        //         })
+        //         .then((willDelete) => {
+        //             if (willDelete) {
+        //                 var hsp_id = $(this).data('hsp_id');
+        //                 var url = "xuly_xoahsp.php?hsp_id=" + hsp_id;
+        //                 location.href = url;
+        //             }
+        //         });
 
-        });
+        // });
     });
     </script>
     <script src="/Du_an_nien_luan/backend/pages/thuonghieu/them_sua_th.js"></script>
