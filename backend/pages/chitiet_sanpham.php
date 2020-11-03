@@ -34,7 +34,8 @@ include_once(__DIR__.'/../../dbconnect.php');
         vertical-align: middle;
 
     }
-    .sl_dathang{
+
+    .sl_dathang {
         margin-top: 15px;
     }
     </style>
@@ -55,7 +56,8 @@ include_once(__DIR__.'/../../dbconnect.php');
                         <a href="/Du_an_nien_luan/index.php"><span>Trang chủ</span> </a>
                     </li>
                     <li class="duongdan_truoc">
-                        <a href="/Du_an_nien_luan/backend/pages/tatcasanpham.php?page=1"><span>Danh sách sản phẩm</span> </a>
+                        <a href="/Du_an_nien_luan/backend/pages/tatcasanpham.php?page=1"><span>Danh sách sản phẩm</span>
+                        </a>
                     </li>
 
                     <li class="duongdan_hientai">
@@ -73,11 +75,8 @@ include_once(__DIR__.'/../../dbconnect.php');
             FROM sanpham sp 
             JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
             JOIN thuonghieu th ON th.th_id = sp.th_id
-            WHERE sp_id = $sp_id;
-            
-EOT;
-        
-       
+            WHERE sp_id = $sp_id;        
+EOT; 
         $result_ct = mysqli_query($conn, $sql_ct);
        
         while ($row_ct = mysqli_fetch_array($result_ct, MYSQLI_ASSOC)) {
@@ -96,54 +95,59 @@ EOT;
         ?>
         <div class="row ">
             <div class="col-md-2"></div>
+            <?php             
+                 $sql_hspct="SELECT MIN(hsp_id), hsp_ten FROM hinhsanpham hsp WHERE sp_id =".$sanpham_ct['sp_id'];
+                $result_hspct = mysqli_query($conn, $sql_hspct);
+                                  
+                while ($row_hspct = mysqli_fetch_array($result_hspct, MYSQLI_ASSOC)) {
+                    $hinhsanpham_ct = array(
+                        //  'hsp_id' => $row1['hsp_id'],
+                        'hsp_ten' => $row_hspct['hsp_ten'],                                        
+                    );
+                }
+                     ?>
             <div class="col-md-8 ">
-                <div class="row toantrang_sp">
-                    <?php
-                         
-                        $sql_hspct="SELECT MIN(hsp_id), hsp_ten FROM hinhsanpham hsp WHERE sp_id =".$sanpham_ct['sp_id'];
-                        $result_hspct = mysqli_query($conn, $sql_hspct);
-                                 
-                        while ($row_hspct = mysqli_fetch_array($result_hspct, MYSQLI_ASSOC)) {
-                            $hinhsanpham_ct = array(
-                             //  'hsp_id' => $row1['hsp_id'],
-                                'hsp_ten' => $row_hspct['hsp_ten'],                                        
-                            );
-                          }
-                    ?>
-                    <div class="col-md-6 img_trang">
-                        <img src="/Du_an_nien_luan/assets/img/upload_img/<?= $hinhsanpham_ct['hsp_ten'] ?>" alt="Lỗi tải ảnh !">
-                    </div>
-                    <div class="col-md-6 content_trang">
-                        <div class="title_sanpham">
-                            <h4><?=$sanpham_ct['sp_ten']?></h4>
-                            <p>Thương hiệu: <span><?=$sanpham_ct['th_ten']?></span></p>
+                <form name="frmsanphamchitiet" id="frmsanphamchitiet" method="post" action="/Du_an_nien_luan/backend/pages/giohang/giohang_themsp.php">
+                    <input type="hidden" name="sp_id" id="sp_id" value="<?= $sanpham_ct['sp_id'] ?>" />
+                    <input type="hidden" name="sp_ten" id="sp_ten" value="<?= $sanphamRow['sp_ten'] ?>" />
+                    <input type="hidden" name="sp_giaban" id="sp_giaban" value="<?= $sanphamRow['sp_giaban'] ?>" />
+                    <input type="hidden" name="lsp_ten" id="lsp_ten" value="<?= $sanphamRow['lsp_ten'] ?>" />
+                    <input type="hidden" name="th_ten" id="th_ten" value="<?= $sanphamRow['th_ten'] ?>" />
+                    <input type="hidden" name="hinhdaidien" id="hinhdaidien"
+                        value="<?= $hinhsanpham_ct['hsp_ten'] ?>" />
+                    <div class="row toantrang_sp">
+                        <div class="col-md-6 img_trang">
+                            <img src="/Du_an_nien_luan/assets/img/upload_img/<?= $hinhsanpham_ct['hsp_ten'] ?>"
+                                alt="Lỗi tải ảnh !">
                         </div>
-                        <div class="thongtin_sanpham">
-                            <h5><?=$sanpham_ct['sp_giaban']?> </h5>
-                            <p>Loại sản phẩm: <span class="tinhtrang"><?=$sanpham_ct['lsp_ten']?></span></p>
-                            <p>Số lượng còn lại: <span class="tinhtrang"><?=$sanpham_ct['sp_slkho']?></span></p>
-                            <h6 style="font-weight: bold;">Mô tả: </h6> <span><?=$sanpham_ct['sp_mota']?></span>
+                        <div class="col-md-6 content_trang">
+                            <div class="title_sanpham">
+                                <h4><?=$sanpham_ct['sp_ten']?></h4>
+                                <p>Thương hiệu: <span><?=$sanpham_ct['th_ten']?></span></p>
+                            </div>
+                            <div class="thongtin_sanpham">
+                                <h5><?=$sanpham_ct['sp_giaban']?> </h5>
+                                <p>Loại sản phẩm: <span class="tinhtrang"><?=$sanpham_ct['lsp_ten']?></span></p>
+                                <p>Số lượng còn lại: <span class="tinhtrang"><?=$sanpham_ct['sp_slkho']?></span></p>
+                                <h6 style="font-weight: bold;">Mô tả: </h6> <span><?=$sanpham_ct['sp_mota']?></span>
+                                <div class="form-group col-md-4">
+                                    <label for="sl_mua" style="font-weight: bold;">Số lượng mua: </label>
+                                    <select id="sl_mua" name="sl_mua" class="form-control"  class="align-middle">
+                                        <?php for($i=1;$i<=$sanpham_ct['sp_slkho'];$i++) :?>
+                                        <option  value="<?=$i; ?>" ><?=$i; ?></option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </div>
+                                <div class="dathang">
+                                    <button type="button" class="btn btn-dathang" name="btn_dathang" id="
+                                    ">Đặt hàng ngay</button>
+                                </div>
+                                </ul>
 
-                            <ul style="list-style-type: none;" class="sl_dathang">
-                                <li>
-                                    Số lượng:
-                                    <div class="buttons_added">
-                                        <input class="minus is-form" type="button" value="-"
-                                            onclick="buttonClick_tru();">
-                                        <input aria-label="quantity" id="inc" class="input-qty" max="100" min="1"
-                                            name="" type="number" value="1">
-                                        <input class="plus is-form" type="button" value="+"
-                                            onclick="buttonClick_cong();">
-                                    </div>
-                                </li>
-                                <li class="dathang">
-                                    <button type="button" class="btn btn-dathang">Đặt hàng ngay</button>
-                                </li>
-                            </ul>
-
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
                 <div class="row danhmuc_muasp">
                     <div class="col-md-12">
                         <div class="row">
@@ -152,7 +156,7 @@ EOT;
                                 <img src="/Du_an_nien_luan/assets/img/icon&logo/icon_product.PNG" alt="">
                             </div>
                         </div>
-                      
+
                         <!-- -------------------------------------------------------------- -->
                         <?php
                         //  include_once(__DIR__ . '/dbconnect.php');
@@ -223,32 +227,55 @@ EOT;
         <?php include_once(__DIR__.'/../partials/footer.php'); ?>
         <!-- end footer  -->
     </div>
-    <script>
-    var i = 0;
-
-    function buttonClick_cong() {
-        i++;
-        if (i < 0) {
-            document.getElementById('inc').value = 0;
-        } else {
-            document.getElementById('inc').value = i;
-        }
-    }
-
-    function buttonClick_tru() {
-        i--;
-        document.getElementById('inc').value = i;
-    }
-    </script>
+    <!-- Các file Javascript sử dụng riêng cho trang này, liên kết tại đây -->
+   
     <!-- end slider home -->
     <?php include_once(__DIR__.'/../scripts.php'); ?>
 
     <!-- form đăng nhập -->
     <?php include_once(__DIR__.'/../partials/dangnhap_popup.php'); ?>
-    <!-- end form đăng nhập -->
-    <!-- ràng buộc phía client cho form đăng nhập  -->
+    <script>
+        function addSanPhamVaoGioHang() {
+            // Chuẩn bị dữ liệu gởi
+            var dulieugoi = {
+                sp_id: $('#sp_id').val(),
+                sp_ten: $('#sp_ten').val(),
+                sp_giaban: $('#sp_giaban').val(),
+                hinhdaidien: $('#hinhdaidien').val(),
+                sl_mua: $('#sl_mua').val(),
+            };
+            // console.log((dulieugoi));
 
-    <!-- end ràng buột đang nhập  -->
+            // Gọi AJAX đến API ở URL `/php/myhand/frontend/api/giohang-themsanpham.php`
+            $.ajax({
+                url: '/Du_an_nien_luan/backend/pages/giohang/giohang-themsp.php',
+                method: "POST",
+                dataType: 'json',
+                data: dulieugoi,
+                success: function(data) {
+                    console.log(data);
+                    var htmlString =
+                        `Sản phẩm đã được thêm vào Giỏ hàng. <a href="/Du_an_nien_luan/backend/pages/giohang/giohang.php">Xem Giỏ hàng</a>.`;
+                    $('#thongbao').html(htmlString);
+                    // Hiện thông báo
+                    $('.alert').removeClass('d-none').addClass('show');
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                    var htmlString = `<h1>Không thể xử lý</h1>`;
+                    $('#thongbao').html(htmlString);
+                    // Hiện thông báo
+                    $('.alert').removeClass('d-none').addClass('show');
+                }
+            });
+        };
+
+        // Đăng ký sự kiện cho nút Thêm vào giỏ hàng
+        $('#btnThemVaoGioHang').click(function(event) {
+            event.preventDefault();
+            addSanPhamVaoGioHang();
+        });
+    </script>
 
 
 

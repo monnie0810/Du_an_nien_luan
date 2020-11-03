@@ -52,7 +52,7 @@
                     </li>
 
                     <li class="duongdan_hientai">
-                        <a href="#"> <span>Tất cả sản phẩm</span> </a>
+                        <a href="#"> <span>Sản phẩm mới</span> </a>
                     </li>
                 </ul>
             </div>
@@ -140,7 +140,7 @@
                             <div class="col-md-12">
                                 <div class="row ">
                                     <div class="col-md-6 title_cardsp">
-                                        <span>Tất cả sản phẩm</span>
+                                        <span>Sản phẩm mới</span>
                                     </div>
                                     <div class="col-md-3"></div>
                                     <div class="col-md-3">
@@ -155,7 +155,7 @@
                               
                                 $start = $page*8 -8;
                                
-                                $sql_re="SELECT * FROM sanpham  ORDER BY sp_id ASC  LIMIT ". $start." , 8";
+                                $sql_re="SELECT * FROM sanpham  ORDER BY sp_id DESC  LIMIT ". $start." , 8";
                                 $result_re = mysqli_query($conn, $sql_re);
                                 $data_re = [];
                                 while ($row_re = mysqli_fetch_array($result_re, MYSQLI_ASSOC)) {
@@ -226,11 +226,11 @@
                     <ul class="pagination justify-content-end">
                         <li class="page-item" style="color: orange;">
                             <?php if ($page == 1): ?>
-                            <a class="page-link" href="/Du_an_nien_luan/backend/pages/tatcasanpham.php?page=<?=$page;?>"
+                            <a class="page-link" href="/Du_an_nien_luan/backend/pages/sp_new.php?page=<?=$page;?>"
                                 tabindex="-1" style="color: #FF4000;">Previous</a>
                             <?php else: ?>
                             <a class="page-link"
-                                href="/Du_an_nien_luan/backend/pages/tatcasanpham.php?page=<?=$page-1;?>" tabindex="-1"
+                                href="/Du_an_nien_luan/backend/pages/sp_new.php?page=<?=$page-1;?>" tabindex="-1"
                                 style="color: #FF4000;">Previous</a>
                             <?php endif; ?>
                         </li>
@@ -244,7 +244,7 @@
                         ?>
                         <?php for($i=1;$i<=$page_sl;$i++): ?>
                         <li class="page-item">
-                            <a class="page-link" href="/Du_an_nien_luan/backend/pages/tatcasanpham.php?page=<?=$i;?>"
+                            <a class="page-link" href="/Du_an_nien_luan/backend/pages/sp_new.php?page=<?=$i;?>"
                                 style="color: #FF4000;"> <?=$i;?> </a>
                         </li>
                         <?php endfor; ?>
@@ -252,10 +252,10 @@
 
                         <li class="page-item">
                             <?php if ($page == $page_sl): ?>
-                            <a class="page-link" href="/Du_an_nien_luan/backend/pages/tatcasanpham.php?page=<?=$page;?>"
+                            <a class="page-link" href="/Du_an_nien_luan/backend/pages/sp_new.php?page=<?=$page;?>"
                                 style="color: #FF4000;">Next</a>
                             <?php else: ?>
-                            <a class="page-link" href="/Du_an_nien_luan/backend/pages/tatcasanpham.php?page=<?=$page + 1;?>"
+                            <a class="page-link" href="/Du_an_nien_luan/backend/pages/sp_new.php?page=<?=$page + 1;?>"
                                 style="color: #FF4000;">Next</a>
                             <?php endif; ?>
                         </li>

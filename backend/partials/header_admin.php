@@ -13,10 +13,7 @@
             <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                 <img src="/Du_an_nien_luan/assets/img/icon&logo/search-icon.png" alt="">
             </a>
-            <div class="collapse" id="collapseExample">
-                <input class="form-control form-control-sm mr-3 w-0" type="text" placeholder="Search"
-                    aria-label="Search">
-            </div>
+          
         </form>
 
     </div>
@@ -70,14 +67,14 @@
                     <!-- ------------------------------------------------------- -->
                     <div class="col-md-6 danhnhap-button">
                         <a href="#" tabindex="-1" data-toggle="modal" data-target="#exampleModal">
-                            <i class="fa fa-user-circle" aria-hidden="true"></i>
+                            <i class="fa fa-sign-in" aria-hidden="true"></i>
                             <span>Đăng nhập </span>
                         </a>
                     </div>
                     <div class="col-md-6 giohang-button ">
-                        <a href="#">
-                            <i class="fa fa-credit-card" aria-hidden="true"></i>
-                            <span> Giỏ hàng</span>
+                        <a href="/Du_an_nien_luan/backend/pages/dangky.php">
+                            <i class="fa fa-user-circle" aria-hidden="true"></i>
+                            <span> Đăng ký</span>
                         </a>
                     </div>
                     <?php endif; ?>

@@ -1,15 +1,15 @@
 <?php 
 include_once(__DIR__.'/../../dbconnect.php'); 
-$sql ="SELECT COUNT(*) as SoLuong FROM `donhang`";
+$sql ="SELECT COUNT(*) as SoLuong FROM `hoadon`";
 $result =mysqli_query($conn,$sql);
-$Tongsokhachhang = [];
+$Tongsohoadon = [];
 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
 {
-    $Tongsokhachhang[] = array(
+    $Tongsohoadon[] = array(
         'SoLuong' => $row['SoLuong']
     );
 }
 
-echo json_encode($Tongsokhachhang[0]);
+echo json_encode($Tongsohoadon[0]);
 
 ?>

@@ -5,22 +5,29 @@
         if(!isset($_SESSION)) { 
             session_start(); 
         } 
+        if(!isset($_SESSION['user'])){
+            header("location: /Du_an_nien_luan/index.php");
+        }
 ?>
 
 <link href="/Du_an_nien_luan/assets/partials/header.css" type=" text/css" rel="stylesheet " />
 
 <div class="row header ">
-    <div class="col-md-4 search-button ">
-        <form class="form-inline d-flex  form-sm active-white active-cyan-2 ml-auto justify-content-center">
-            <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                <img src="/Du_an_nien_luan/assets/img/icon&logo/search-icon.png" alt="">
-            </a>
-            <div class="collapse" id="collapseExample">
-                <input class="form-control form-control-sm mr-3 w-0" type="text" placeholder="Search"
-                    aria-label="Search">
+    <div class="col-md-4 search-button mx-auto">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <!-- <form action="/Du_an_nien_luan/backend/pages/Search_sp.php" class="form-inline my-2 my-sm-1"
+                    name="Seach_form" id="Seach_form" method="$_GET">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Nhập tên sản phẩm"
+                        aria-label="Search" name="namesearch" id="namesearch">
+                   
+                    <button class="btn btn-outline-warning my-2 my-sm-1" type="submit" name="btnsearch"
+                        id="btnsearch">Search</button>
+                </form> -->
             </div>
-        </form>
 
+        </div>
     </div>
     <div class="col-md-4 ">
         <div class="row">
@@ -55,7 +62,7 @@
                     <!-- ------------------------------------------------------- -->
                     <?php if (isset($_SESSION["user"])):?>
                     <div class="col-md-6 danhnhap-button">
-                        <a href="#" tabindex="-1" data-target="#exampleModal">
+                        <a href="/Du_an_nien_luan/backend/pages/giohang/giohang.php" tabindex="-1" data-target="#exampleModal">
                             <i class="fa fa-credit-card" aria-hidden="true"></i>
                             <span>giỏ hàng</span>
                         </a>
@@ -107,52 +114,52 @@
                         <div class="sanpham-level ">
 
                             <ul style="list-style-type:none; ">
-                                <h6>DEAL CHỚP NHOÁNG</h6>
+                                <h6>DANH MỤC SẢN PHẨM</h6>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html"> Sản phẩm mới</a>
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_new.php?page=1"> Sản phẩm mới</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Sản phẩm còn nhiều</a>
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_slnhieu.php?page=1">Sản phẩm còn nhiều</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html"> Sản phẩm còn ít</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="sanpham-level ">
-                            <ul style="list-style-type:none; ">
-                                <h6>Mọi giới tính</h6>
-                                <li>
-                                    <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html"> Dành cho nữ </a>
-                                </li>
-                                <li>
-                                    <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Dành cho nam</a>
-                                </li>
-                                <li>
-                                    <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Unisex</a>
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_slit.php?page=1"> Sản phẩm còn ít</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="sanpham-level ">
-                            <ul style="list-style-type:none; ">
-                                <h6>Loại sản phẩm</h6>
+                        <ul style="list-style-type:none; ">
+                                <h6>DANH MỤC SẢN PHẨM</h6>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Quần</a>
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_new.php?page=1"> Sản phẩm mới</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Áo</a>
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_slnhieu.php?page=1">Sản phẩm còn nhiều</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="../HtmlFile/san_pham.html">Áo khoác</a>
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_slit.php?page=1"> Sản phẩm còn ít</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="sanpham-level ">
+                        <ul style="list-style-type:none; ">
+                                <h6>DANH MỤC SẢN PHẨM</h6>
+                                <li>
+                                    <i class="fa fa-angle-right " aria-hidden="true "></i>
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_new.php?page=1"> Sản phẩm mới</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-angle-right " aria-hidden="true "></i>
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_slnhieu.php?page=1">Sản phẩm còn nhiều</a>
+                                </li>
+                                <li>
+                                    <i class="fa fa-angle-right " aria-hidden="true "></i>
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_slit.php?page=1"> Sản phẩm còn ít</a>
                                 </li>
                             </ul>
                         </div>
