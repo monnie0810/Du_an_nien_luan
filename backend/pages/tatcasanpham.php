@@ -189,7 +189,7 @@
                                                 style=" height: 300px; width: 240px; padding: 10px 0px 0px 10px;">
                                             <div class="overlay">
                                                 <div class="icon_thanhtoan">
-                                                    <a href="">
+                                                    <a href="#" id="btnThemVaoGioHang" name="btnThemVaoGioHang">
                                                         <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                                     </a>
                                                 </div>

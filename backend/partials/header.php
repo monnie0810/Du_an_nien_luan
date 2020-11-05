@@ -6,7 +6,7 @@
             session_start(); 
         } 
         if(!isset($_SESSION['user'])){
-            header("location: /Du_an_nien_luan/index.php");
+            // header("location: /Du_an_nien_luan/index.php");
         }
 ?>
 
