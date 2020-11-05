@@ -79,7 +79,7 @@ if (session_id() === '') {
                     </li>
 
                     <li class="duongdan_hientai">
-                        <a href="../HtmlFile/dang_ky.html"> <span>Cập nhật thương hiệu</span> </a>
+                        <a href="#"> <span>Cập nhật thương hiệu</span> </a>
                     </li>
                 </ul>
             </div>

@@ -46,10 +46,12 @@ $sp_kichthuoc = $sanpham['sp_kichthuoc'];
 $th_ten = $sanpham['th_ten'];
 $hinhdaidien = $hinhsanpham['hsp_ten'];
 $thanhtien =($sl_mua * $sp_giaban);
+$user = $_SESSION['user'];
 
 if (isset($_SESSION['giohangdata'])) {
     $data = $_SESSION['giohangdata'];
     $data[$sp_id] = array(
+        'tv_id' => $user,
         'sp_id' => $sp_id,
         'sp_ten' => $sp_ten,
         'sl_mua' => $sl_mua,
@@ -64,6 +66,7 @@ if (isset($_SESSION['giohangdata'])) {
     $_SESSION['giohangdata'] = $data;
 } else { 
     $data[$sp_id] = array(
+        'tv_id' => $user,
         'sp_id' => $sp_id,
         'sp_ten' => $sp_ten,
         'sl_mua' => $sl_mua,

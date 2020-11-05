@@ -46,6 +46,17 @@ if (session_id() === '') {
     .tables_div {
         margin: auto;
     }
+    .dataTables_length {
+        width: 50%;
+        float: left;
+        margin-top: 20px;
+    }
+
+    .dataTables_filter {
+        width: 50%;
+        float: left;
+        margin-top: 20px;
+    }
     </style>
 </head>
 
@@ -63,7 +74,7 @@ if (session_id() === '') {
                     </li>
 
                     <li class="duongdan_hientai">
-                        <a href="../HtmlFile/dang_ky.html"> <span>Danh sách sản phẩm</span> </a>
+                        <a href="#"> <span>Danh sách sản phẩm</span> </a>
                     </li>
                 </ul>
             </div>

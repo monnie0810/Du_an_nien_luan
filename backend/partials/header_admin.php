@@ -95,7 +95,7 @@
                     <a class="nav-link active item-navbar " href="/Du_an_nien_luan/backend/pages/index_admin.php ">Trang chủ</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link item-navbar " href="/Du_an_nien_luan/backend/pages/gioithieu.php">Đơn hàng</a>
+                    <a class="nav-link item-navbar " href="/Du_an_nien_luan/backend/pages/donhang/ds_donhang.php">Đơn hàng</a>
                 </li>
                 <li class="nav-item sanpham-block ">
                     <a class="nav-link item-navbar " href="#">Quản lý</a>

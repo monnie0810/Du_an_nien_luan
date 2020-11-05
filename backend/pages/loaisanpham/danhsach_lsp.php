@@ -32,6 +32,7 @@ if (session_id() === '') {
     .tables_div {
         margin: auto;
     }
+    
     </style>
 </head>
 
@@ -49,7 +50,7 @@ if (session_id() === '') {
                     </li>
 
                     <li class="duongdan_hientai">
-                        <a href="../HtmlFile/dang_ky.html"> <span>Danh sách loại sản phẩm</span> </a>
+                        <a href="#"> <span>Danh sách loại sản phẩm</span> </a>
                     </li>
                 </ul>
             </div>

@@ -82,7 +82,7 @@
                                                 <a href="../HtmlFile/san_pham.html">
                                                     <img src="/Du_an_nien_luan/assets/img/icon&logo/banner_col_4.jpg"
                                                         alt="">
-                                                    <Span>Ivy Moda</Span>
+                                                    <Span>Bán chạy</Span>
                                                 </a>
                                             </div>
                                         </div>
@@ -91,7 +91,7 @@
                                                 <a href="../HtmlFile/san_pham.html">
                                                     <img src="/Du_an_nien_luan/assets/img/icon&logo/banner_col_1.jpg"
                                                         alt="">
-                                                    <Span>Novelty</Span>
+                                                    <Span>Mới nhập</Span>
                                                 </a>
                                             </div>
                                         </div>
@@ -152,11 +152,11 @@
                                         class="card-img-top news-item-img image-card"
                                         style=" height: 300px; width: 240px;">
                                     <div class="overlay">
-                                        <div class="icon_thanhtoan">
+                                        <!-- <div class="icon_thanhtoan">
                                             <a href="">
                                                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                             </a>
-                                        </div>
+                                        </div> -->
                                         <div class="icon_xemthem">
                                             <a
                                                 href="/Du_an_nien_luan/backend/pages/chitiet_sanpham.php?sp_id=<?=$sanpham['sp_id']?>">
@@ -243,11 +243,11 @@
                                         class="card-img-top news-item-img image-card"
                                         style=" height: 300px; width: 240px; padding: 10px 0px 0px 10px;">
                                     <div class="overlay">
-                                        <div class="icon_thanhtoan">
+                                        <!-- <div class="icon_thanhtoan">
                                             <a href="">
                                                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                             </a>
-                                        </div>
+                                        </div> -->
                                         <div class="icon_xemthem">
                                             <a
                                                 href="/Du_an_nien_luan/backend/pages/chitiet_sanpham.php?sp_id=<?=$sanpham_re['sp_id']?>">
@@ -329,11 +329,11 @@
                                         class="card-img-top news-item-img image-card"
                                         style=" height: 300px; width: 240px; padding: 10px 0px 0px 10px;">
                                     <div class="overlay">
-                                        <div class="icon_thanhtoan">
+                                        <!-- <div class="icon_thanhtoan">
                                             <a href="">
                                                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                             </a>
-                                        </div>
+                                        </div> -->
                                         <div class="icon_xemthem">
                                             <a
                                                 href="/Du_an_nien_luan/backend/pages/chitiet_sanpham.php?sp_id=<?=$sanpham_cc['sp_id']?>">

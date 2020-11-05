@@ -121,11 +121,22 @@ if (session_id() === '') {
                     </div>
 
                     <!-- Nút thêm mới, bấm vào sẽ hiển thị form nhập thông tin Thêm mới -->
-                    <a href="/Du_an_nien_luan/index.php" class="btn btn-warning btn-md"><i class="fa fa-arrow-left"
-                            aria-hidden="true"></i> Quay
-                        về trang chủ</a>
-                    <a href="/Du_an_nien_luan/backend/pages/donhang/xuly_donhang.php" class="btn btn-primary btn-md"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    <a href="/Du_an_nien_luan/backend/pages/giohang/donhang_user.php" class="btn btn-info btn-md">
+                    <i class="fa fa-list-alt" aria-hidden="true"></i>
+                    Đơn hàng
+                </a>
+                    <a href="/Du_an_nien_luan/backend/pages/donhang/xuly_donhang.php" class="btn btn-success btn-md"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         Đặt hàng</a>
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-md-12" style="color: red; font-weight:bold;font-size:20px;">
+                                <?php
+                                if(isset($_SESSION['thongbao_giohang'])){
+                                    echo $_SESSION['thongbao_giohang'];
+                                    unset($_SESSION['thongbao_giohang']);
+                                }
+                                ?>
+                            </div>
+                        </div>
 
                     <div class="row content_pages">
                         <div class="tables_div">
@@ -148,6 +159,7 @@ if (session_id() === '') {
                                 <tbody>
 
                                     <?php foreach ($giohangdata as $sanpham) : ?>
+                                        <?php if($sanpham['tv_id'] === $_SESSION['user']) :?>
                                     <tr>
                                         <td><?= $i; $i++ ?></td>
                                         <td>
@@ -175,6 +187,7 @@ if (session_id() === '') {
                                             </a>
                                         </td>
                                     </tr>
+                                        <?php endif; ?>
                                     <?php endforeach; ?>
                                     <tr>
                                         <td colspan="10" style="font-size: 20px;">
