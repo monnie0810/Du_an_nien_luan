@@ -47,6 +47,7 @@ if(!isset($_SESSION['user'])){
         float: left;
         margin-top: 20px;
     }
+
     .user_khachhang span {
         color: #FACC2E;
         font-weight: bold;
@@ -132,7 +133,7 @@ if(!isset($_SESSION['user'])){
                                         <th>Tổng tiền</th>
                                         <th>Trạng thái</th>
                                         <th>Tác vụ</th>
-                                       
+
 
                                     </tr>
                                 </thead>
@@ -141,21 +142,32 @@ if(!isset($_SESSION['user'])){
                                     <?php foreach ($data as $dondathang) : ?>
                                     <tr>
                                         <td><?php echo $i; $i++; ?></td>
-                                       
+
                                         <td><?= $dondathang['hd_id'] ?></td>
                                         <td><?= $dondathang['hd_ngaylap'] ?></td>
-                                        <td><?= $dondathang['hd_tongtien'] ?></td>
+                                        <td><?= number_format($dondathang['hd_tongtien'], 0, ".", ",")?> vnđ</td>
                                         <?php if($dondathang['hd_trangthai'] == 0):?>
                                         <td>Chưa giao</td>
+                                        <td>
+                                            <a href="/Du_an_nien_luan/backend/pages/donhang/xoa_donhang.php?hd_id=<?= $dondathang['hd_id'] ?>"
+                                                class="btn btn-danger">
+                                                Hủy
+                                            </a>
+                                            <a href="xemchitiet_donhang_user.php?hd_id=<?= $dondathang['hd_id'] ?>"
+                                                class="btn btn-primary">
+                                                Xem chi tiết
+                                            </a>
+                                        </td>
                                         <?php elseif($dondathang['hd_trangthai'] == 1): ?>
                                         <td>Đã giao</td>
-                                        <?php endif; ?>
                                         <td>
                                             <a href="xemchitiet_donhang_user.php?hd_id=<?= $dondathang['hd_id'] ?>"
                                                 class="btn btn-primary">
                                                 Xem chi tiết
                                             </a>
                                         </td>
+                                        <?php endif; ?>
+
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>

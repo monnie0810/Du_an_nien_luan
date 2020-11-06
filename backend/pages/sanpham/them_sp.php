@@ -157,10 +157,10 @@
                                 <div class="col-md-12" style="text-align: center;">
                                     <?php
                                     
-                                    if(isset( $_SESSION["thongbao"])){
-                                        echo  $_SESSION["thongbao"];
-                                        session_unset();
-                                    }
+                                    // if(isset( $_SESSION["thongbao"])){
+                                    //     echo  $_SESSION["thongbao"];
+                                    //     session_unset();
+                                    // }
                                     ?>
                                 </div>
                             </div>

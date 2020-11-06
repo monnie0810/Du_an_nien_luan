@@ -136,6 +136,7 @@ if(!isset($_SESSION['user'])){
                                         <td>
                                             <a href="giao_donhang.php?hd_id=<?= $dondathang['hd_id'] ?>"
                                                 class="btn btn-success">
+                                                
                                                 Giao
                                             </a>
                                             <!-- Nút sửa, bấm vào sẽ hiển thị form hiệu chỉnh thông tin dựa vào khóa chính -->
@@ -143,11 +144,18 @@ if(!isset($_SESSION['user'])){
                                                 class="btn btn-danger">
                                                 Xóa
                                             </a>
+                                            <a href="chitiet_donhang.php?hd_id=<?= $dondathang['hd_id'] ?>"
+                                                class="btn btn-primary">
+                                                xem
+                                            </a>
                                         </td>
                                         <?php elseif($dondathang['hd_trangthai'] == 1): ?>
                                         <td>Đã giao</td>
                                         <td>
-
+                                        <a href="chitiet_donhang.php?hd_id=<?= $dondathang['hd_id'] ?>"
+                                                class="btn btn-primary">
+                                                xem
+                                            </a>
                                         </td>
                                         <?php endif; ?>
 

@@ -34,7 +34,7 @@ if(isset($_POST['btndangky'] )){
             VALUES 
             ('$tendangnhap', '$ngaysinh', '$gioitinh', '$email', '$sdt', '$diachi', '$matkhau', $quantri);                  
 EOT;
-        $result = mysqli_query($conn, $sql);
+        $result = mysqli_query($conn, $sql) or die("khong thể chạy !");
         $_SESSION["user"] = $sdt;
         header("location: /Du_an_nien_luan/index.php");   
     

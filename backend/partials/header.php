@@ -1,13 +1,13 @@
 <?php
+     
     include_once(__DIR__.'/../scripts.php'); 
     include_once(__DIR__.'/../styles.php'); 
     include_once(__DIR__.'/../../dbconnect.php'); 
         if(!isset($_SESSION)) { 
             session_start(); 
         } 
-        if(!isset($_SESSION['user'])){
-            // header("location: /Du_an_nien_luan/index.php");
-        }
+   
+        
 ?>
 
 <link href="/Du_an_nien_luan/assets/partials/header.css" type=" text/css" rel="stylesheet " />
@@ -62,7 +62,8 @@
                     <!-- ------------------------------------------------------- -->
                     <?php if (isset($_SESSION["user"])):?>
                     <div class="col-md-6 danhnhap-button">
-                        <a href="/Du_an_nien_luan/backend/pages/giohang/giohang.php" tabindex="-1" data-target="#exampleModal">
+                        <a href="/Du_an_nien_luan/backend/pages/giohang/giohang.php" tabindex="-1"
+                            data-target="#exampleModal">
                             <i class="fa fa-credit-card" aria-hidden="true"></i>
                             <span>giỏ hàng</span>
                         </a>
@@ -121,7 +122,8 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="/Du_an_nien_luan/backend/pages/sp_slnhieu.php?page=1">Sản phẩm còn nhiều</a>
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_slnhieu.php?page=1">Sản phẩm còn
+                                        nhiều</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
@@ -130,7 +132,7 @@
                             </ul>
                         </div>
                         <div class="sanpham-level ">
-                        <ul style="list-style-type:none; ">
+                            <ul style="list-style-type:none; ">
                                 <h6>DANH MỤC SẢN PHẨM</h6>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
@@ -138,7 +140,8 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="/Du_an_nien_luan/backend/pages/sp_slnhieu.php?page=1">Sản phẩm còn nhiều</a>
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_slnhieu.php?page=1">Sản phẩm còn
+                                        nhiều</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
@@ -147,7 +150,7 @@
                             </ul>
                         </div>
                         <div class="sanpham-level ">
-                        <ul style="list-style-type:none; ">
+                            <ul style="list-style-type:none; ">
                                 <h6>DANH MỤC SẢN PHẨM</h6>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
@@ -155,7 +158,8 @@
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="/Du_an_nien_luan/backend/pages/sp_slnhieu.php?page=1">Sản phẩm còn nhiều</a>
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_slnhieu.php?page=1">Sản phẩm còn
+                                        nhiều</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
