@@ -17,14 +17,7 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-10">
-                <!-- <form action="/Du_an_nien_luan/backend/pages/Search_sp.php" class="form-inline my-2 my-sm-1"
-                    name="Seach_form" id="Seach_form" method="$_GET">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Nhập tên sản phẩm"
-                        aria-label="Search" name="namesearch" id="namesearch">
-                   
-                    <button class="btn btn-outline-warning my-2 my-sm-1" type="submit" name="btnsearch"
-                        id="btnsearch">Search</button>
-                </form> -->
+               
             </div>
 
         </div>
@@ -136,16 +129,15 @@
                                 <h6>DANH MỤC SẢN PHẨM</h6>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="/Du_an_nien_luan/backend/pages/sp_new.php?page=1"> Sản phẩm mới</a>
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_caocap.php?page=1"> Sản phẩm cao cấp</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="/Du_an_nien_luan/backend/pages/sp_slnhieu.php?page=1">Sản phẩm còn
-                                        nhiều</a>
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_giare.php?page=1">Sản phẩm giá rẻ</a>
                                 </li>
                                 <li>
                                     <i class="fa fa-angle-right " aria-hidden="true "></i>
-                                    <a href="/Du_an_nien_luan/backend/pages/sp_slit.php?page=1"> Sản phẩm còn ít</a>
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_slit.php?page=1"> Sản phẩm bán chạy</a>
                                 </li>
                             </ul>
                         </div>

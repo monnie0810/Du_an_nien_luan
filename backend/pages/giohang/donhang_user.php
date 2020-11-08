@@ -120,7 +120,16 @@ if(!isset($_SESSION['user'])){
                         <h1 class="h2">Danh sách đơn hàng</h1>
                     </div>
 
-
+                    <div class="row">
+                    <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                        <a href="/Du_an_nien_luan/backend/pages/giohang/giohang.php" class="btn btn-warning">
+                                <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+                                Danh sách đơn hàng
+                            </a>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
                     <div class="row content_pages">
                         <div class="tables_div">
                             <table id="tblDanhSach"

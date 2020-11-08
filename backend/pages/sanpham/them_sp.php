@@ -2,6 +2,23 @@
  if (session_id() === '') {
     session_start();
   }
+  if (isset($_SESSION["user"])){
+    $user = $_SESSION["user"];
+    include_once(__DIR__ . '/../../../dbconnect.php');
+    $sql_ad = "SELECT * FROM thanhvien WHERE tv_sdt = '$user'";
+    $result_ad = mysqli_query($conn,$sql_ad);
+    while($row_ad = mysqli_fetch_array($result_ad,MYSQLI_ASSOC)){
+        $data_ad = array(
+            'tv_id' => $row_ad['tv_id'],
+            'quyen_id' => $row_ad['quyen_id'],
+        );   
+    }
+    if ($data_ad['quyen_id'] == 1){
+            header("location: /Du_an_nien_luan/index.php");
+    }
+} else {
+    header("location: /Du_an_nien_luan/index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

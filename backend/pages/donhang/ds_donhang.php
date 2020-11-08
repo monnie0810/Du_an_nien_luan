@@ -2,9 +2,24 @@
 if (session_id() === '') {
   session_start();
 }
-if(!isset($_SESSION['user'])){
+if (isset($_SESSION["user"])){
+    $user = $_SESSION["user"];
+    include_once(__DIR__ . '/../../../dbconnect.php');
+    $sql_ad = "SELECT * FROM thanhvien WHERE tv_sdt = '$user'";
+    $result_ad = mysqli_query($conn,$sql_ad);
+    while($row_ad = mysqli_fetch_array($result_ad,MYSQLI_ASSOC)){
+        $data_ad = array(
+            'tv_id' => $row_ad['tv_id'],
+            'quyen_id' => $row_ad['quyen_id'],
+        );   
+    }
+    if ($data_ad['quyen_id'] == 1){
+            header("location: /Du_an_nien_luan/index.php");
+    }
+} else {
     header("location: /Du_an_nien_luan/index.php");
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -72,8 +87,8 @@ if(!isset($_SESSION['user'])){
 
         </div>
         <div class="row ">
-            <div class="col-md-2"></div>
-            <div class="col-md-8 ">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 ">
                 <main role="main" class=" ml-sm-auto px-4 mb-2  content_lsp">
                     <!-- Block content -->
                     <?php
@@ -130,7 +145,8 @@ if(!isset($_SESSION['user'])){
                                         <td><?= $dondathang['tv_sdt'] ?></td>
                                         <td><?= $dondathang['hd_id'] ?></td>
                                         <td><?= $dondathang['hd_ngaylap'] ?></td>
-                                        <td><?= $dondathang['hd_tongtien'] ?></td>
+                                        
+                                        <td><?= number_format($dondathang['hd_tongtien'], 0, ".", ",")?> vnđ</td>
                                         <?php if($dondathang['hd_trangthai'] == 0):?>
                                         <td>Chưa giao</td>
                                         <td>
@@ -169,7 +185,7 @@ if(!isset($_SESSION['user'])){
                     <!-- End block content -->
                 </main>
             </div>
-            <div class="col-md-2"></div>
+            <div class="col-md-1"></div>
         </div>
         <?php include_once(__DIR__ . '/../../partials/footer.php'); ?>
     </div>

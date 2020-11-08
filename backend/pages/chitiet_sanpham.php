@@ -137,7 +137,11 @@ EOT;
                             <div class="thongtin_sanpham">
                                 <h5><?=$sanpham_ct['sp_giaban']?> </h5>
                                 <p>Loại sản phẩm: <span class="tinhtrang"><?=$sanpham_ct['lsp_ten']?></span></p>
+                                <?php if($sanpham_ct['sp_slkho'] >0) :?>
                                 <p>Số lượng còn lại: <span class="tinhtrang"><?=$sanpham_ct['sp_slkho']?></span></p>
+                                <?php else:?>
+                                    <p>Số lượng còn lại: <span class="tinhtrang">Hết hàng</span></p>
+                                <?php endif; ?>
                                 <h6 style="font-weight: bold;">Mô tả: </h6> <span><?=$sanpham_ct['sp_mota']?></span>
                                 <div class="form-group col-md-4">
                                     <label for="sl_mua" style="font-weight: bold;">Số lượng mua: </label>
@@ -201,11 +205,11 @@ EOT;
                                         class="card-img-top news-item-img image-card"
                                         style=" height: 300px; width: 240px; padding: 10px 0px 0px 10px;">
                                     <div class="overlay">
-                                        <div class="icon_thanhtoan">
+                                        <!-- <div class="icon_thanhtoan">
                                             <a href="">
                                                 <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                             </a>
-                                        </div>
+                                        </div> -->
                                         <div class="icon_xemthem">
                                             <a
                                                 href="/Du_an_nien_luan/backend/pages/chitiet_sanpham.php?sp_id=<?=$sanpham_re['sp_id']?>">

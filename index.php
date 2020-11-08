@@ -59,9 +59,9 @@
                         <div class="row danhmuc_sp">
                             <div class="col-md-6 danhmuc_col1">
                                 <div class="img_col">
-                                    <a href="../HtmlFile/san_pham.html">
+                                    <a href="/Du_an_nien_luan/backend/pages/sp_new.php?page=1">
                                         <img src="/Du_an_nien_luan/assets/img/icon&logo/banner_col_2.jpg" alt="">
-                                        <Span>Shop nữ</Span>
+                                        <Span>Hàng mới</Span>
                                     </a>
                                 </div>
                             </div>
@@ -69,17 +69,17 @@
                                 <div class="row">
                                     <div class="col-md-6 danhmuc_col1">
                                         <div class="img_col">
-                                            <a href="../HtmlFile/san_pham.html">
+                                            <a href="/Du_an_nien_luan/backend/pages/sp_caocap.php?page=1">
                                                 <img src="/Du_an_nien_luan/assets/img/icon&logo/banner_col_3.jpg"
                                                     alt="">
-                                                <Span>Shop nam</Span>
+                                                <Span>Cao cấp</Span>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="row ">
                                             <div class="col-md-12 danhmuc_col2">
-                                                <a href="../HtmlFile/san_pham.html">
+                                                <a href="/Du_an_nien_luan/backend/pages/sp_slit.php?page=1">
                                                     <img src="/Du_an_nien_luan/assets/img/icon&logo/banner_col_4.jpg"
                                                         alt="">
                                                     <Span>Bán chạy</Span>
@@ -88,10 +88,10 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12 danhmuc_col3">
-                                                <a href="../HtmlFile/san_pham.html">
+                                                <a href="/Du_an_nien_luan/backend/pages/sp_slnhieu.php?page=1">
                                                     <img src="/Du_an_nien_luan/assets/img/icon&logo/banner_col_1.jpg"
                                                         alt="">
-                                                    <Span>Mới nhập</Span>
+                                                    <Span>Còn nhiều</Span>
                                                 </a>
                                             </div>
                                         </div>
@@ -286,7 +286,7 @@
                                 <span>HÀNG CAO CẤP</span>
                             </div>
                             <div class="col-md-4 xemthem_cardsp">
-                                <a href="">Xem thêm sản phẩm >></a>
+                                <a href="#">Xem thêm sản phẩm >></a>
                             </div>
                             <div class="col-md-2">
                                 <div class="thanhngang"></div>

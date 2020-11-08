@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monnie Store - Tất cả sản phẩm</title>
+    <title>Monnie Store - Sản phẩm mới nhập</title>
     <?php include_once(__DIR__.'/../styles.php'); ?>
     <link rel="stylesheet" href="/Du_an_nien_luan/assets/pages/index.css" type="text/css " />
     <link rel="stylesheet" href="/Du_an_nien_luan/assets/pages/tatcasanpham.css" type="text/css " />

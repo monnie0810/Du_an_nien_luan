@@ -63,34 +63,37 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
             $sp_id = $item['sp_id'];
             $sp_dh_soluong = $item['sl_mua'];
             $sp_giaban = $item['sp_giaban'];
-            $hd_tongtien += $sp_giaban * $sp_dh_soluong;
-            // 4.2. Câu lệnh INSERT
-            $sqlInsertSanPhamDonDatHang = <<<EOT
-            INSERT INTO `hoadon_chitiet` (`sp_id`, `hd_id`, `hd_slsp`) 
-                VALUES ($sp_id, $hd_id, $sp_dh_soluong);
-    EOT;
-    
-            // 4.3. Thực thi INSERT
-            mysqli_query($conn, $sqlInsertSanPhamDonDatHang);
-            $sql_soluongkho = <<<EOT
-            UPDATE sanpham SET
-            sp_slkho=sp_slkho - $sp_dh_soluong
-           WHERE sp_id = $sp_id
-EOT;
-mysqli_query($conn, $sql_soluongkho);
-        }
-        //update tong tien vai hoa don 
-      
-        $sql_updatetongtien = <<<EOT
-        UPDATE hoadon
-        SET
-        hd_tongtien='$hd_tongtien'
-        WHERE hd_id=$hd_id
-    EOT;
-    mysqli_query($conn, $sql_updatetongtien);
-        unset($_SESSION['giohangdata']);
-        $_SESSION['thongbao_giohang'] = "Giỏ hàng rỗng !";
-        header("location: /Du_an_nien_luan/backend/pages/giohang/giohang.php");
+           
+            if($item['tv_id'] == $_SESSION['user']){
+                $hd_tongtien += $sp_giaban * $sp_dh_soluong;
+                // 4.2. Câu lệnh INSERT
+                $sqlInsertSanPhamDonDatHang = <<<EOT
+                INSERT INTO `hoadon_chitiet` (`sp_id`, `hd_id`, `hd_slsp`) 
+                    VALUES ($sp_id, $hd_id, $sp_dh_soluong);
+                EOT;
+
+                // 4.3. Thực thi INSERT
+                mysqli_query($conn, $sqlInsertSanPhamDonDatHang);
+                $sql_soluongkho = <<<EOT
+                UPDATE sanpham SET
+                sp_slkho=sp_slkho - $sp_dh_soluong
+                WHERE sp_id = $sp_id
+                EOT;
+                mysqli_query($conn, $sql_soluongkho);
+                //update tong tien vai hoa don 
+                $sql_updatetongtien = <<<EOT
+                UPDATE hoadon
+                SET
+                hd_tongtien='$hd_tongtien'
+                WHERE hd_id=$hd_id
+                EOT;
+                mysqli_query($conn, $sql_updatetongtien);
+                unset($_SESSION['giohangdata']);
+                $_SESSION['thongbao_giohang'] = "Giỏ hàng rỗng !";
+                header("location: /Du_an_nien_luan/backend/pages/giohang/giohang.php");
+                }  
+            }
+           
     }
 
 }

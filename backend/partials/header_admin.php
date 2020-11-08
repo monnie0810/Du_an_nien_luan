@@ -34,7 +34,8 @@
                         $data[] = array(
                             'tv_ten' => $row['tv_ten'],
                         );
-                    }?>
+                    }
+                    ?>
                 <?php foreach($data as $thanhvien): ?>
                 <span style="color: #FACC2E; font-weight: bold;" ><?= $thanhvien['tv_ten']; ?> </span>
                 <?php endforeach; ?>
@@ -52,9 +53,9 @@
                     <!-- ------------------------------------------------------- -->
                     <?php if (isset($_SESSION["user"])):?>
                     <div class="col-md-6 danhnhap-button">
-                        <a href="#" tabindex="-1" data-target="#exampleModal">
-                            <i class="fa fa-credit-card" aria-hidden="true"></i>
-                            <span> Giỏ hàng</span>
+                        <a href="/Du_an_nien_luan/index.php" tabindex="-1" data-target="#exampleModal">
+                        <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                            <span> Trang chủ</span>
                         </a>
                     </div>
                     <div class="col-md-6 giohang-button ">
@@ -92,7 +93,7 @@
         <div class="col-md-12">
             <ul class="nav justify-content-center ">
                 <li class="navbar-header ">
-                    <a class="nav-link active item-navbar " href="/Du_an_nien_luan/backend/pages/index_admin.php ">Trang chủ</a>
+                    <a class="nav-link active item-navbar " href="/Du_an_nien_luan/backend/pages/index_admin.php ">Thống kê</a>
                 </li>
                 <li class="nav-item ">
                     <a class="nav-link item-navbar " href="/Du_an_nien_luan/backend/pages/donhang/ds_donhang.php">Đơn hàng</a>

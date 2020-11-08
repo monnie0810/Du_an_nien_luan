@@ -74,7 +74,7 @@ if(!isset($_SESSION['user'])){
                     </li>
 
                     <li class="duongdan_hientai">
-                        <a href="#"> <span>Đơn hàng chi tiết</span> </a>
+                        <a href="#"> <span>Chi tiết đơn hàng</span> </a>
                     </li>
                 </ul>
             </div>
@@ -97,6 +97,7 @@ if(!isset($_SESSION['user'])){
                     $result = mysqli_query($conn, $sql_hoadon);
                     while ($row_hoadon = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                         $hoadon_thongtin = array(
+                            'hd_id' => $row_hoadon['hd_id'],
                             'hd_ngaylap' => $row_hoadon['hd_ngaylap'],
                             'hd_trangthai' => $row_hoadon['hd_trangthai'],
                             'hd_tongtien' => $row_hoadon['hd_tongtien'],
@@ -121,13 +122,17 @@ if(!isset($_SESSION['user'])){
                     ?>
                     <div
                         class=" justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
-                        <h1 class="h2">Danh sách đơn hàng</h1>
+                        <h1 class="h2">Chi tiết đơn hàng</h1>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <a href="donhang_user.php" class="btn btn-warning">
                                 <i class="fa fa-hand-o-left" aria-hidden="true"></i>
                                 Danh sách đơn hàng
+                            </a>
+                            <a href="/Du_an_nien_luan/backend/pages/donhang/xoa_donhang.php?hd_id=<?= $hoadon_thongtin['hd_id'] ?>"
+                                class="btn btn-danger"> <i class="fa fa-ban" aria-hidden="true"></i>
+                                Hủy
                             </a>
                         </div>
                         <div class="col-md-6">
