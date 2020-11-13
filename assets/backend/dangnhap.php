@@ -9,8 +9,8 @@ if (session_id() === '') {
 include_once(__DIR__.'/../../backend/scripts.php'); 
 include_once(__DIR__.'/../../dbconnect.php');
 if(isset($_POST['btn_dangnhap'])){
-    $sdt = $_POST['txtsodienthoai'];
-    $matkhau = sha1($_POST['txtmatkhau']);
+    $sdt = htmlentities($_POST['txtsodienthoai']);
+    $matkhau = addslashes(sha1($_POST['txtmatkhau']));
     if(empty($sdt) || empty($matkhau)){
         $_SESSION["thongbao"]= "vui lòng nhập thông tin đầy đủ !";
         header("location: /Du_an_nien_luan/index.php"); 

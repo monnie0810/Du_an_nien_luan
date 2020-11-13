@@ -88,7 +88,15 @@ if (!isset($_SESSION['user']) || empty($_SESSION['user'])) {
                 WHERE hd_id=$hd_id
                 EOT;
                 mysqli_query($conn, $sql_updatetongtien);
-                unset($_SESSION['giohangdata']);
+                $data = $_SESSION['giohangdata'];
+    
+                if(isset($data[$sp_id])) {
+                    unset($data[$sp_id]);
+                }
+            
+                // lưu dữ liệu giỏ hàng vào session
+                $_SESSION['giohangdata'] = $data;
+                // unset($_SESSION['giohangdata']);
                 $_SESSION['thongbao_giohang'] = "Giỏ hàng rỗng !";
                 header("location: /Du_an_nien_luan/backend/pages/giohang/giohang.php");
                 }  

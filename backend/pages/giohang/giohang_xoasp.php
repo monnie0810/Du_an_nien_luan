@@ -15,15 +15,17 @@ include_once(__DIR__ . '/../../../dbconnect.php');
 
 // Lấy thông tin người dùng gởi đến
 $sp_id = $_POST['sp_id'];
-
+$tv_id = $_SESSION['user'];
 // Lưu trữ giỏ hàng trong session
 // Nếu khách hàng đặt hàng cùng sản phẩm đã có trong giỏ hàng => cập nhật lại Số lượng, Thành tiền
 if (isset($_SESSION['giohangdata'])) {
     $data = $_SESSION['giohangdata'];
-    
-    if(isset($data[$sp_id])) {
-        unset($data[$sp_id]);
+    if($data['tv_id'] === $_SESSION['user']){
+        if(isset($data[$sp_id])) {
+            unset($data[$sp_id]);
+        }
     }
+    
 
     // lưu dữ liệu giỏ hàng vào session
     $_SESSION['giohangdata'] = $data;
