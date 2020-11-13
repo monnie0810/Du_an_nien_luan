@@ -18,13 +18,11 @@ $sp_id = $hinhsanpham['sp_id'];
 
 $upload_dir = __DIR__ . "/../../../assets/img/upload_img/";
 
-$old_file = $upload_dir . $hinhsanphamRow['hsp_tentaptin'];
+$old_file = $upload_dir . $hinhsanpham['hsp_ten'];
 if (file_exists($old_file)) {
     // Hàm unlink(filepath) dùng để xóa file trong PHP
     unlink($old_file);
 }
-
-$hsp_id = $_GET['hsp_id'];
 $sql = "DELETE FROM `hinhsanpham` WHERE hsp_id=" . $hsp_id;
 
 // 5. Thực thi câu lệnh DELETE
@@ -34,7 +32,7 @@ $result = mysqli_query($conn, $sql);
 mysqli_close($conn);
 
 // Sau khi cập nhật dữ liệu, tự động điều hướng về trang Danh sách
-header("location: /Du_an_nien_luan/backend/pages/hinhsanpham/danhsach_hsp.php?sp_id= '$sp_id'");
+header("location: /Du_an_nien_luan/backend/pages/hinhsanpham/danhsach_hsp.php?sp_id= $sp_id");
 
 
 

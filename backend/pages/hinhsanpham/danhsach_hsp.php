@@ -136,7 +136,7 @@ if (isset($_SESSION["user"])){
                         <h2 class="tensp_header"><?= $sanpham['sp_ten'] ?></h2>
                     </div>
                     <!-- Nút thêm mới, bấm vào sẽ hiển thị form nhập thông tin Thêm mới -->
-                    <a href="/Du_an_nien_luan/backend/pages/hinhsanpham/them_hsp.php?sp_id='<?=$sanpham['sp_id']?>'"
+                    <a href="/Du_an_nien_luan/backend/pages/hinhsanpham/them_hsp.php?sp_id=<?=$sanpham['sp_id']?>"
                         class="btn btn-primary" style="margin-bottom: 20px;">
                         Thêm hình sản phẩm
                     </a>

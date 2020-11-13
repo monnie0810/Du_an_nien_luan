@@ -177,12 +177,13 @@ EOT;
                                         <td><?= $dondathang['lsp_ten'] ?></td>
                                         <td><?= $dondathang['th_ten'] ?></td>
                                         <!-- ------------------------hinh san pham------------------- -->
+                                        <?php $sp_id = $dondathang['sp_id']; ?>
                                         <td>
-                                            <a href="/Du_an_nien_luan/backend/pages/hinhsanpham/danhsach_hsp.php?sp_id=<?= $dondathang['sp_id'] ?>"
+                                            <a href="/Du_an_nien_luan/backend/pages/hinhsanpham/danhsach_hsp.php?sp_id=<?= $sp_id;?>"
                                                 class="btn btn-info">
                                                 Xem
                                             </a>
-                                            <a href="/Du_an_nien_luan/backend/pages/hinhsanpham/them_hsp.php?sp_id=<?= $dondathang['sp_id'] ?>"
+                                            <a href="/Du_an_nien_luan/backend/pages/hinhsanpham/them_hsp.php?sp_id=<?= $sp_id ?>"
                                                 class="btn btn-success">
                                                 Thêm
                                             </a>

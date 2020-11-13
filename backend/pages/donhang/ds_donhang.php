@@ -97,7 +97,7 @@ if (isset($_SESSION["user"])){
                     error_reporting(E_ALL);
                     include_once(__DIR__ . '/../../../dbconnect.php');
                     $i=1;
-                    $sql = "SELECT hd.*, tv.tv_ten, tv.tv_sdt FROM hoadon hd JOIN thanhvien tv ON tv.tv_id=hd.tv_id ORDER BY hd.hd_trangthai";
+                    $sql = "SELECT hd.*, tv.tv_ten, tv.tv_sdt FROM hoadon hd JOIN thanhvien tv ON tv.tv_id=hd.tv_id ORDER BY hd.hd_trangthai AND hd.hd_id DESC";
     
                     // 3. Thực thi câu truy vấn SQL để lấy về dữ liệu
                     $result = mysqli_query($conn, $sql);
