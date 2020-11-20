@@ -117,6 +117,11 @@ if (isset($_SESSION["user"])){
                         class=" justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
                         <h1 class="h2">Danh sách đơn hàng</h1>
                     </div>
+                    <a href="/Du_an_nien_luan/backend/pages/index_admin.php" class="btn btn-warning"
+                        style="margin-bottom: 20px;">
+                        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+                        Quay về trang chủ
+                    </a>
 
 
                     <div class="row content_pages">

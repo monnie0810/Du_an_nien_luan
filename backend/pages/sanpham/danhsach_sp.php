@@ -144,6 +144,11 @@ EOT;
                     <a href="/Du_an_nien_luan/backend/pages/sanpham/them_sp.php" class="btn btn-primary">
                         Thêm sản phẩm
                     </a>
+                    <a href="/Du_an_nien_luan/backend/pages/index_admin.php" class="btn btn-warning"
+                        style="margin-bottom: 20px;">
+                        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+                        Quay về trang chủ
+                    </a>
 
                     <div class="row content_pages">
                         <div class="tables_div">

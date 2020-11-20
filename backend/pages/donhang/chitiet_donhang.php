@@ -127,19 +127,25 @@ if (isset($_SESSION["user"])){
                         class=" justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
                         <h1 class="h2">Danh sách đơn hàng</h1>
                     </div>
+                    <a href="/Du_an_nien_luan/backend/pages/donhang/ds_donhang.php" class="btn btn-warning"
+                                style="margin-bottom: 20px;">
+                                <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+                                Quay về trang chủ
+                            </a>
                     <div class="row">
                         <div class="col-md-6">
                             <?php if($hoadon_thongtin['hd_trangthai'] == 0): ?>
                             <a href="giao_donhang.php?hd_id=<?= $hoadon ?>" class="btn btn-success">
-                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                <i class="fa fa-cart-plus" aria-hidden="true"></i>
                                 Giao
                             </a>
                             <!-- Nút sửa, bấm vào sẽ hiển thị form hiệu chỉnh thông tin dựa vào khóa chính -->
                             <a href="xoa_donhang.php?hd_id=<?= $hoadon ?>" class="btn btn-danger">
-                            <i class="fa fa-ban" aria-hidden="true"></i>
+                                <i class="fa fa-ban" aria-hidden="true"></i>
                                 Xóa
                             </a>
                             <?php endif;?>
+                           
                         </div>
                         <div class="col-md-6">
                             <ul style="list-style-type: none; padding-left: 0px; margin: 0px">

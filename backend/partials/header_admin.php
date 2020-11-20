@@ -121,7 +121,7 @@
                     </div>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link item-navbar " href="/Du_an_nien_luan/backend/pages/lienhe.php">Thành viên</a>
+                    <a class="nav-link item-navbar " href="/Du_an_nien_luan/backend/pages/thanhvien/ds_thanhvien.php">Thành viên</a>
                 </li>
             </ul>
         </div>

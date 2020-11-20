@@ -26,7 +26,7 @@ if (isset($_SESSION["user"])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoonStore - Loại sản phẩm</title>
+    <title>MoonStore - Thương hiệu</title>
 
 
     <?php include_once(__DIR__.'/../../styles.php'); ?>
@@ -42,14 +42,35 @@ if (isset($_SESSION["user"])){
         text-align: center;
     }
 
+    .trangchu_pages td {
+        vertical-align: middle;
+    }
+
     .content_pages {
         margin: auto;
+    }
+
+    .dataTables_length {
+        width: 50%;
+        float: left;
+    }
+
+    .dataTables_filter {
+        width: 50%;
+        float: left;
     }
 
     .tables_div {
         margin: auto;
     }
-    
+
+    .tensp_header {
+        color: red;
+    }
+
+    .img-fluid {
+        height: 100px;
+    }
     </style>
 </head>
 
@@ -63,11 +84,11 @@ if (isset($_SESSION["user"])){
             <div class="col-md-8 duongdan">
                 <ul style="list-style-type: none;">
                     <li class="duongdan_truoc">
-                    <a href="/Du_an_nien_luan/backend/pages/index_admin.php"><span>Trang chủ</span> </a>
+                        <a href="/Du_an_nien_luan/backend/pages/index_admin.php"><span>Trang chủ</span> </a>
                     </li>
 
                     <li class="duongdan_hientai">
-                        <a href="#"> <span>Danh sách loại sản phẩm</span> </a>
+                        <a href="#"> <span>Danh sách Thành viên</span> </a>
                     </li>
                 </ul>
             </div>
@@ -86,62 +107,71 @@ if (isset($_SESSION["user"])){
                     ini_set('display_startup_errors', 1);
                     error_reporting(E_ALL);
                     include_once(__DIR__ . '/../../../dbconnect.php');
-                    $i=1;
-                    $sql = "SELECT * FROM loaisanpham";
-    
-                    // 3. Thực thi câu truy vấn SQL để lấy về dữ liệu
-                    $result = mysqli_query($conn, $sql);
-                    $data = [];
-                    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-                        $data[] = array(
-                            'lsp_ten' => $row['lsp_ten'],
-                            'lsp_id' => $row['lsp_id']
+                    $i =1;
+                    // select san pham 
+                    $sql1 = "SELECT * from thanhvien ORDER BY tv_id DESC";
+                    $result1 = mysqli_query($conn, $sql1);
+                    $tvrow=[];
+                    while ($row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
+                        $tvrow[] = array(
+                            'tv_id' => $row1['tv_id'],
+                            'tv_ten' => $row1['tv_ten'],
+                            'tv_sdt' => $row1['tv_sdt'],
+                            'tv_gioitinh' => $row1['tv_gioitinh'],
+                            'tv_ngaysinh' => $row1['tv_ngaysinh'],
+                            'tv_email' => $row1['tv_email'],
+                            'tv_diachi' => $row1['tv_diachi'],
+                            
                         );
                     }
                     ?>
                     <div
                         class=" justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
-                        <h1 class="h2">Danh sách loại sản phẩm</h1>
+
+                        <h2 class="h2">Danh sách hình sản phẩm </h2>
+                        <h2 class="tensp_header"></h2>
                     </div>
                     <!-- Nút thêm mới, bấm vào sẽ hiển thị form nhập thông tin Thêm mới -->
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#popup_themlsp">
-                        Thêm loại sản phẩm
-                    </a>
                     <a href="/Du_an_nien_luan/backend/pages/index_admin.php" class="btn btn-warning"
                         style="margin-bottom: 20px;">
                         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
                         Quay về trang chủ
                     </a>
-                    
                     <div class="row content_pages">
                         <div class="tables_div">
-                            <table id="tblDanhSach"
-                                class="table table-hover table-sm table-responsive mt-5 trangchu_pages">
+                            <table id="tblDanhSach_hsp" class="table table-hover table-responsive mt-5 trangchu_pages">
                                 <thead class="thead-dark">
                                     <tr>
                                         <th>Số thứ tự</th>
-                                        <th>Tên loại sản phẩm</th>
-                                        <th>Tác vụ</th>
-
+                                        <th>Tên thành viên</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Giới tính</th>
+                                        <th>Ngày sinh</th>
+                                        <!-- <th>Email</th> -->
+                                        <th>Địa chỉ</th>
+                                        <th>Tác vụ</th>                                  
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    <?php foreach ($data as $dondathang) : ?>
+                                    <?php foreach ($tvrow as $thanhvien) : ?>
                                     <tr>
                                         <td><?php echo $i; $i++; ?></td>
-                                        <td><?= $dondathang['lsp_ten'] ?></td>
+
+                                        <td><?= $thanhvien['tv_ten'] ?></td>
+                                        <td>  <?= $thanhvien['tv_sdt'] ?>  </td>
+                                        <td><?= $thanhvien['tv_gioitinh'] ?></td>
+                                        <td>  <?= $thanhvien['tv_ngaysinh'] ?>  </td>
+                                        
+                                        <td>  <?= $thanhvien['tv_diachi'] ?>  </td>
                                         <td>
-                                            <!-- Nút sửa, bấm vào sẽ hiển thị form hiệu chỉnh thông tin dựa vào khóa chính -->
-                                            <a href="sua_lsp.php?lsp_id=<?= $dondathang['lsp_id'] ?>"
-                                                class="btn btn-warning">
-                                                Sửa
-                                            </a>
+
                                             <!-- Nút xóa, bấm vào sẽ xóa thông tin dựa vào khóa chính `dh_ma` -->
-                                            <a href="xoa_lsp.php?lsp_id=<?= $dondathang['lsp_id'] ?>"
-                                                class="btn btn-danger">
-                                                xóa
+                                            <a class="btn btn-danger"
+                                                href="xuly_xoatv.php?tv_id=<?= $thanhvien['tv_id'] ?>">
+                                                Xóa
                                             </a>
+
 
 
                                         </td>
@@ -159,47 +189,6 @@ if (isset($_SESSION["user"])){
         <?php include_once(__DIR__ . '/../../partials/footer.php'); ?>
     </div>
 
-    <!-- Thêm loại sản phẩm -->
-    <div class="modal fade" id="popup_themlsp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <!-- start form them loai san pham -->
-                <form name="Form_themlsp" id="Form_themlsp"
-                    action="/Du_an_nien_luan/backend/pages/loaisanpham/xuly_themlsp.php" method="POST">
-
-                    <div class="modal-header">
-                        <h5 class="modal-title title-dangnhap" id="exampleModalLabel">Thêm loại sản phẩm
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Tên loại sản phẩm:</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="txttenlsp" name="txttenlsp"
-                                    placeholder="Tên loại sản phẩm">
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-outline-primary" name="btn_themlsp"
-                            id="btn_themlsp">Thêm</button>
-                    </div>
-
-                </form>
-                <!-- end form them loai san pham  -->
-            </div>
-        </div>
-    </div>
-    <!-- end Thêm loại sản phẩm -->
-
-
-
     <!-- Nhúng file quản lý phần SCRIPT JAVASCRIPT -->
     <?php include_once(__DIR__ . '/../../scripts.php'); ?>
 
@@ -214,17 +203,15 @@ if (isset($_SESSION["user"])){
     <script src="/Du_an_nien_luan/assets/vendor/sweetalert/sweetalert.min.js"></script>
     <script>
     $(document).ready(function() {
-        $('#tblDanhSach').DataTable({
+        $('#tblDanhSach_hsp').DataTable({
             dom: 'Blfrtip',
             buttons: [
 
             ]
         });
-
-
     });
     </script>
-    <script src="/Du_an_nien_luan/backend/pages/loaisanpham/them_sua_lsp.js"></script>
+    <script src="/Du_an_nien_luan/backend/pages/thuonghieu/them_sua_th.js"></script>
 
 </body>
 
