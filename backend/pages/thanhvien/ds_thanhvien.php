@@ -109,7 +109,7 @@ if (isset($_SESSION["user"])){
                     include_once(__DIR__ . '/../../../dbconnect.php');
                     $i =1;
                     // select san pham 
-                    $sql1 = "SELECT * from thanhvien ORDER BY tv_id DESC";
+                    $sql1 = "SELECT * from thanhvien WHERE quyen_id = 1 ORDER BY tv_id DESC ";
                     $result1 = mysqli_query($conn, $sql1);
                     $tvrow=[];
                     while ($row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC)) {
