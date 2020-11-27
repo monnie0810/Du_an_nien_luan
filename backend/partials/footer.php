@@ -30,7 +30,7 @@
                 <ul style="list-style-type: none;">
                     <li> Địa chỉ: Tầng 8 Ladeco, 266 Đội Cấn, Hà Nội</li>
                     <li> Điện thoại:
-                        <a href="tel:0123456789"></a>
+                        <a href="tel:0971972102">0971972102</a>
                     </li>
                     <li> MST: 01A8016500</li>
                     <li> <a href="">Hệ thống cửa hàng</a></li>
