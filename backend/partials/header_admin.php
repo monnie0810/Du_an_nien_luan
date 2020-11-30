@@ -9,10 +9,6 @@
 
 <div class="row header ">
     <div class="col-md-4 search-button ">
-        <form class="form-inline d-flex  form-sm active-white active-cyan-2 ml-auto justify-content-center">
-            <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                <img src="/Du_an_nien_luan/assets/img/icon&logo/search-icon.png" alt="">
-            </a>
           
         </form>
 

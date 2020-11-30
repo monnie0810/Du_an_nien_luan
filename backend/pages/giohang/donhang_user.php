@@ -125,7 +125,7 @@ if(!isset($_SESSION['user'])){
                         <div class="col-md-4">
                         <a href="/Du_an_nien_luan/backend/pages/giohang/giohang.php" class="btn btn-warning">
                                 <i class="fa fa-hand-o-left" aria-hidden="true"></i>
-                                Danh sách đơn hàng
+                                Quay về giỏ hàng
                             </a>
                         </div>
                         <div class="col-md-4"></div>

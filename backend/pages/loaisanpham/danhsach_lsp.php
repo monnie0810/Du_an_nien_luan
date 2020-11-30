@@ -104,7 +104,7 @@ if (isset($_SESSION["user"])){
                         <h1 class="h2">Danh sách loại sản phẩm</h1>
                     </div>
                     <!-- Nút thêm mới, bấm vào sẽ hiển thị form nhập thông tin Thêm mới -->
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#popup_themlsp">
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#popup_themlsp"  style="margin-bottom: 20px;">
                         Thêm loại sản phẩm
                     </a>
                     <a href="/Du_an_nien_luan/backend/pages/index_admin.php" class="btn btn-warning"

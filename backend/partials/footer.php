@@ -26,14 +26,14 @@
                 </ul>
             </div>
             <div class="col-md-4 col_footer">
-                <p>Hệ thống cửa hàng</p>
+                <p>Thông tin cửa hàng</p>
                 <ul style="list-style-type: none;">
                     <li> Địa chỉ: Tầng 8 Ladeco, 266 Đội Cấn, Hà Nội</li>
                     <li> Điện thoại:
                         <a href="tel:0971972102">0971972102</a>
                     </li>
                     <li> MST: 01A8016500</li>
-                    <li> <a href="">Hệ thống cửa hàng</a></li>
+                    <!-- <li> <a href="">Hệ thống cửa hàng</a></li>-->
 
                 </ul>
             </div>

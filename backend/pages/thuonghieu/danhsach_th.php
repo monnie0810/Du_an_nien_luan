@@ -104,8 +104,13 @@ if (isset($_SESSION["user"])){
                         <h1 class="h2">Danh sách thương hiệu</h1>
                     </div>
                     <!-- Nút thêm mới, bấm vào sẽ hiển thị form nhập thông tin Thêm mới -->
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#popup_themth">
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#popup_themth" style="margin-bottom: 20px;">
                         Thêm thương hiệu
+                    </a>
+                    <a href="/Du_an_nien_luan/backend/pages/index_admin.php" class="btn btn-warning"
+                        style="margin-bottom: 20px;">
+                        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+                        Quay về trang chủ
                     </a>
                     <div class="row content_pages">
                         <div class="tables_div">

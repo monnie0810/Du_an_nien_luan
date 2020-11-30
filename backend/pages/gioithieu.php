@@ -7,7 +7,25 @@
     <title>Monnie Store - Giới thiệu</title>
     <?php include_once(__DIR__.'/../styles.php'); ?>
     <link rel="stylesheet" href="/Du_an_nien_luan/assets/pages/gioithieu.css" type="text/css " />
+  <style>
+    .user_khachhang span {
+        color: #FACC2E;
+        font-weight: bold;
+    }
 
+    .user_khachhang {
+        text-align: center;
+        padding-top: 7px;
+    }
+
+    .xemthem_sp a {
+        font-size: 15px;
+        color: #6E6E6E;
+        /* #FA8258; */
+        vertical-align: middle;
+
+    }
+    </style>
 </head>
 
 <body>

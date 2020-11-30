@@ -130,10 +130,12 @@ if(!isset($_SESSION['user'])){
                                 <i class="fa fa-hand-o-left" aria-hidden="true"></i>
                                 Danh sách đơn hàng
                             </a>
+                            <?php if($hoadon_thongtin['hd_trangthai'] == 0) :?>
                             <a href="/Du_an_nien_luan/backend/pages/donhang/xoa_donhang.php?hd_id=<?= $hoadon_thongtin['hd_id'] ?>"
                                 class="btn btn-danger"> <i class="fa fa-ban" aria-hidden="true"></i>
                                 Hủy
                             </a>
+                            <?php endif;?>
                         </div>
                         <div class="col-md-6">
                             <ul style="list-style-type: none; padding-left: 0px; margin: 0px">

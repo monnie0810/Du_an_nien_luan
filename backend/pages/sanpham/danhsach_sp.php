@@ -141,7 +141,7 @@ EOT;
                         <h1 class="h2">Danh sách sản phẩm</h1>
                     </div>
                     <!-- Nút thêm mới, bấm vào sẽ hiển thị form nhập thông tin Thêm mới -->
-                    <a href="/Du_an_nien_luan/backend/pages/sanpham/them_sp.php" class="btn btn-primary">
+                    <a href="/Du_an_nien_luan/backend/pages/sanpham/them_sp.php" class="btn btn-primary" style="margin-bottom: 20px;">
                         Thêm sản phẩm
                     </a>
                     <a href="/Du_an_nien_luan/backend/pages/index_admin.php" class="btn btn-warning"

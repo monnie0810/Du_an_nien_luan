@@ -9,7 +9,7 @@ if (session_id() === '') {
 include_once(__DIR__.'/../../backend/scripts.php'); 
 include_once(__DIR__.'/../../dbconnect.php');
 if(isset($_POST['btn_dangnhap'])){
-    $sdt = htmlentities($_POST['txtsodienthoai']);
+    $sdt = addslashes($_POST['txtsodienthoai']);
     $matkhau = addslashes(sha1($_POST['txtmatkhau']));
     if(empty($sdt) || empty($matkhau)){
         $_SESSION["thongbao"]= "vui lòng nhập thông tin đầy đủ !";

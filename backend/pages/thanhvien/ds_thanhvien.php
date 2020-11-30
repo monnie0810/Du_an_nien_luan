@@ -128,7 +128,7 @@ if (isset($_SESSION["user"])){
                     <div
                         class=" justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
 
-                        <h2 class="h2">Danh sách hình sản phẩm </h2>
+                        <h2 class="h2">Danh sách thành viên </h2>
                         <h2 class="tensp_header"></h2>
                     </div>
                     <!-- Nút thêm mới, bấm vào sẽ hiển thị form nhập thông tin Thêm mới -->
