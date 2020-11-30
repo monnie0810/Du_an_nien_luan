@@ -11,18 +11,7 @@ if (session_id() === '') {
 
             if (isset($_FILES['hsp_tentaptin']['name'])) {
               // echo $sp_id; 
-              $upload_dir = __DIR__ . "/../../../assets/img/upload_img/";
-            
-             
-
-              // Đối với mỗi file, sẽ có các thuộc tính như sau:
-              // $_FILES['hsp_tentaptin']['name']     : Tên của file chúng ta upload
-              // $_FILES['hsp_tentaptin']['type']     : Kiểu file mà chúng ta upload (hình ảnh, word, excel, pdf, txt, ...)
-              // $_FILES['hsp_tentaptin']['tmp_name'] : Đường dẫn đến file tạm trên web server
-              // $_FILES['hsp_tentaptin']['error']    : Trạng thái của file chúng ta upload, 0 => không có lỗi
-              // $_FILES['hsp_tentaptin']['size']     : Kích thước của file chúng ta upload
-
-              
+              $upload_dir = __DIR__ . "/../../../assets/img/upload_img/";             
               if ($_FILES['hsp_tentaptin']['error'] > 0) {
                 $_SESSION['thongbao_hsp']='Vui lòng thêm hình ảnh !';
                 header("location: /Du_an_nien_luan/backend/pages/hinhsanpham/them_hsp.php?sp_id=".$sp_id); 
@@ -31,15 +20,21 @@ if (session_id() === '') {
           
                 $hsp_tentaptin = $_FILES['hsp_tentaptin']['name'];
                 $tentaptin = date('YmdHis') . '_' . $hsp_tentaptin;
-
+                move_uploaded_file($_FILES['hsp_tentaptin']['tmp_name'], $upload_dir . $tentaptin);
               
                 // var_dump($_FILES['hsp_tentaptin']['tmp_name']);
                 // var_dump($upload_dir . $subdir . $tentaptin);
-
-                move_uploaded_file($_FILES['hsp_tentaptin']['tmp_name'], $upload_dir . $tentaptin);
-              $sql = "INSERT INTO `hinhsanpham` (hsp_ten, sp_id) VALUES ('$tentaptin', $sp_id);";
+                $sql_hsp="SELECT hsp_id FROM hinhsanpham WHERE sp_id=".$sp_id;
+                $sql_hinhanh =  mysqli_query($conn, $sql_hsp);
+                if(mysqli_num_rows($sql_hinhanh) == 0){
+                  $sql = "INSERT INTO `hinhsanpham` (hsp_ten, sp_id,hsp_title) VALUES ('$tentaptin', $sp_id,1);";
+                } else {
+                  $sql = "INSERT INTO `hinhsanpham` (hsp_ten, sp_id,hsp_title) VALUES ('$tentaptin', $sp_id,0);";
+                }
+               
               mysqli_query($conn, $sql);
-
+               
+            }
               // Đóng kết nối
               mysqli_close($conn);
 
@@ -47,7 +42,6 @@ if (session_id() === '') {
               header("location: /Du_an_nien_luan/backend/pages/hinhsanpham/danhsach_hsp.php?sp_id=".$sp_id);
               
         }
-      }
           else {
             echo "Không tải được file lên !!";
           }

@@ -76,7 +76,7 @@ error_reporting(E_ALL);
         $sp_id = $_GET['sp_id'];
          $sql_ct = <<<EOT
             SELECT sp.sp_id,sp.sp_ten,sp.sp_mausac,sp.sp_kichthuoc,sp.sp_giabandau,sp.sp_mota,
-            sp.sp_giaban,sp.sp_slkho, lsp.lsp_ten, th.th_ten
+            sp.sp_giaban,sp.sp_slkho, lsp.lsp_ten, th.th_ten, sp_trangthai
             FROM sanpham sp 
             JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
             JOIN thuonghieu th ON th.th_id = sp.th_id
@@ -88,6 +88,7 @@ EOT;
             $sanpham_ct = array(
                 'sp_id' => $row_ct['sp_id'],
                 'sp_ten' => $row_ct['sp_ten'],
+                'sp_trangthai' => $row_ct['sp_trangthai'],
                 'sp_mausac' => $row_ct['sp_mausac'],
                 'sp_kichthuoc' => $row_ct['sp_kichthuoc'],
                 'sp_slkho' => $row_ct['sp_slkho'],
@@ -103,13 +104,13 @@ EOT;
         <div class="row ">
             <div class="col-md-2"></div>
             <?php             
-                 $sql_hspct="SELECT MIN(hsp_id), hsp_ten FROM hinhsanpham hsp WHERE sp_id =".$sanpham_ct['sp_id'];
+                 $sql_hspct="SELECT hsp_id, hsp_ten,hsp_title FROM hinhsanpham hsp WHERE sp_id =".$sanpham_ct['sp_id'];
                 $result_hspct = mysqli_query($conn, $sql_hspct);
-                                  
+                $hinhsanpham_ct=[];    
                 while ($row_hspct = mysqli_fetch_array($result_hspct, MYSQLI_ASSOC)) {
-                    $hinhsanpham_ct = array(
-                        //  'hsp_id' => $row1['hsp_id'],
+                    $hinhsanpham_ct[] = array(
                         'hsp_ten' => $row_hspct['hsp_ten'],                                        
+                        'hsp_title' => $row_hspct['hsp_title'],                                        
                     );
                 }
                      ?>
@@ -126,8 +127,39 @@ EOT;
                     <!-- ------------------------- -->
                     <div class="row toantrang_sp">
                         <div class="col-md-6 img_trang">
-                            <img src="/Du_an_nien_luan/assets/img/upload_img/<?= $hinhsanpham_ct['hsp_ten'] ?>"
-                                alt="Lỗi tải ảnh !">
+                            <!-- -----------------------------------hinh anh ------------------------------------------------------ -->
+
+                            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <?php foreach($hinhsanpham_ct as $hsp_slider):?>
+                                    <?php if($hsp_slider['hsp_title'] ==1):?>
+                                    <div class="carousel-item active" style="height: 600px;">
+                                        <img class="d-block w-100 "
+                                            src="/Du_an_nien_luan/assets/img/upload_img/<?= $hsp_slider['hsp_ten'] ?>"
+                                            alt="không có ảnh">
+                                    </div>
+                                    <?php else: ?>
+                                    <div class="carousel-item" style="height: 600px;">
+                                        <img class="d-block w-100"
+                                            src="/Du_an_nien_luan/assets/img/upload_img/<?= $hsp_slider['hsp_ten'] ?>"
+                                            alt="không có ảnh">
+                                    </div>
+                                    <?php endif; ?>
+                                    <?php endforeach ?>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <!-- ----------------------------------hinh anh ------------------------------------------------------ -->
+
                         </div>
                         <div class="col-md-6 content_trang">
                             <div class="title_sanpham">
@@ -135,28 +167,45 @@ EOT;
                                 <p>Thương hiệu: <span><?=$sanpham_ct['th_ten']?></span></p>
                             </div>
                             <div class="thongtin_sanpham">
-                                <h5><?=$sanpham_ct['sp_giaban']?> </h5>
-                                <p>Loại sản phẩm: <span class="tinhtrang"><?=$sanpham_ct['lsp_ten']?></span></p>
-                                <?php if($sanpham_ct['sp_slkho'] >0) :?>
-                                <p>Số lượng còn lại: <span class="tinhtrang"><?=$sanpham_ct['sp_slkho']?></span></p>
-                                <?php else:?>
+                                <?php if($sanpham_ct['sp_trangthai']==0) :?>
+                                    <h5><?=$sanpham_ct['sp_giaban']?> </h5>
+                                    <p>Loại sản phẩm: <span class="tinhtrang"><?=$sanpham_ct['lsp_ten']?></span></p>
+                                    <?php if($sanpham_ct['sp_slkho'] >0) :?>
+                                    <p>Số lượng còn lại: <span class="tinhtrang"><?=$sanpham_ct['sp_slkho']?></span></p>
+                                    <?php else:?>
                                     <p>Số lượng còn lại: <span class="tinhtrang">Hết hàng</span></p>
-                                <?php endif; ?>
-                                <h6 style="font-weight: bold;">Mô tả: </h6> <span><?=$sanpham_ct['sp_mota']?></span>
-                                <div class="form-group col-md-4">
-                                    <label for="sl_mua" style="font-weight: bold;">Số lượng mua: </label>
-                                    <select id="sl_mua" name="sl_mua" class="form-control" class="align-middle">
-                                        <?php for($i=1;$i<=$sanpham_ct['sp_slkho'];$i++) :?>
-                                        <option value="<?=$i; ?>"><?=$i; ?></option>
-                                        <?php endfor; ?>
-                                    </select>
-                                </div>
-                                <div class="dathang">
-                                    <button class="btn btn-dathang" name="btnThemVaoGioHang"
-                                        id="btnThemVaoGioHang">Đặt hàng ngay</button>
-                                </div>
-                                </ul>
+                                    <?php endif; ?>
+                                    <h6 style="font-weight: bold;">Mô tả: </h6> <span><?=$sanpham_ct['sp_mota']?></span>
+                                    <div class="form-group col-md-4">
+                                        <label for="sl_mua" style="font-weight: bold;">Số lượng mua: </label>
+                                        <select id="sl_mua" name="sl_mua" class="form-control" class="align-middle">
+                                            <?php for($i=1;$i<=$sanpham_ct['sp_slkho'];$i++) :?>
+                                            <option value="<?=$i; ?>"><?=$i; ?></option>
+                                            <?php endfor; ?>
+                                        </select>
+                                    </div>
+                                    <div class="dathang">
+                                        <button class="btn btn-dathang" name="btnThemVaoGioHang" id="btnThemVaoGioHang">Đặt
+                                            hàng ngay</button>
+                                    </div>
+                                <?php else: ?>
+                                    <h5><?=$sanpham_ct['sp_giaban']?> </h5>
+                                    <p>Loại sản phẩm: <span class="tinhtrang"><?=$sanpham_ct['lsp_ten']?></span></p>
+                                   
+                                    <p>Số lượng còn lại: <span class="tinhtrang">Ngừng kinh doanh</span></p>
+                                   
+                                    <h6 style="font-weight: bold;">Mô tả: </h6> <span><?=$sanpham_ct['sp_mota']?></span>
+                                    <div class="form-group col-md-4">
+                                        <label for="sl_mua" style="font-weight: bold;">Số lượng mua: </label>
+                                        <select id="sl_mua" name="sl_mua" class="form-control" class="align-middle">
+                                            <?php for($i=1;$i<=0;$i++) :?>
+                                            <option value="<?=$i; ?>"><?=$i; ?></option>
+                                            <?php endfor; ?>
+                                        </select>
+                                    </div>
+                                  
 
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -240,9 +289,9 @@ EOT;
         <?php include_once(__DIR__.'/../partials/footer.php'); ?>
         <!-- end footer  -->
     </div>
-  
 
-   
+
+
     <?php include_once(__DIR__.'/../scripts.php'); ?>
 
     <!-- form đăng nhập -->

@@ -116,7 +116,8 @@ if (isset($_SESSION["user"])){
     FROM sanpham sp 
     JOIN loaisanpham lsp ON lsp.lsp_id = sp.lsp_id
     JOIN thuonghieu th ON th.th_id = sp.th_id
-    GROUP BY sp.sp_id;
+    WHERE sp_trangthai=0
+    GROUP BY sp.sp_id DESC;
 EOT;
 
                 // 3. Thực thi câu truy vấn SQL để lấy về dữ liệu
